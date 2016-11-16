@@ -9,10 +9,8 @@
 	 background-repeat: no-repeat;
 	 background-size:1900px ; 
 }
-@media (max-width: 768px){
-:root{
-	 background-size:900px ; 
-}
+li{
+		list-style-type:none;
 }
 body{
 	font-family: arial, verdana;
@@ -35,27 +33,19 @@ a, a:hover, a:focus{
 	border-right:solid 3px  white;
 	border-radius: 0px 0px 10px 10px;
 }
-.menu , .foot{
-	background-color: #B43104;
+.menu , footer{
+	background-color: #5882FA;
 }
 li.unem{
 		color:white;
 		font-variant:small-caps;
 		text-shadow:1px 1px 1px black;
 }
-.foot{
-	border-left:solid 3px  white;
-	border-right:solid 3px  white;
-	border-top:solid 3px  white;
-	border-radius: 10px 10px 0px 0px;
-	text-align:center;
-	color:white;
-}
 
 .content{
 	margin-top:130px;
 	margin-bottom:100px;
-	background-color: #B43104;
+	background-color: #5882FA;
 	border-radius:10px;
 	border:solid 2px  white;
 }
@@ -72,35 +62,39 @@ li.unem{
 	color:white;
 	text-shadow:1px 1px 1px black;
 }
-@media (min-width: 1700px) {
- .content, {
-	width:70%;
-	margin-left:auto;
-	margin-right:auto;
-}
-}
-@media (max-width: 1700px) {
-.foot, .menu, .content{
-	border-left:solid 0px  white;
-	border-right:solid 0px  white;
-	border-radius:0px;
-}
-}
+
+
+
 .izquierda{
 	float: left;
 	margin:15px 30px;
-	background-color:#2E64FE;
+	background-color:#00FF80;
     border-radius: 40%; 
     text-shadow: 4px 4px 2px black;
     color:white;
    	font-variant: small-caps;
    	font-size: 1.7em;
 }
-
+.derecha{
+	float: right;
+	margin:15px 30px;
+}
 .content form label{
 	min-width: 150px;
 }
+.nav{
+	height:120px;
 
+}
+.nav ul li{
+	
+}
+.nav li{
+	margin-top:90px;
+	display:inline-block;
+	font-size:1.1em;
+	margin-left:20px;
+}
 .content{
 	text-align: center;
 }
@@ -109,95 +103,7 @@ li.unem{
 	width:100%;
 }
 
-figure.produ img{
-	height:92%;
-	/*width: 100%;*/
-	border-radius: 20px 20px 0px 0px;
-	transition:0.6s;
-}
-figure.produ:hover{
-	transition:0.6s;
-	transform: scale(1.03);
-	box-shadow: 5px 5px 5px;
-}
-figure.produ{
-	height:270px;
-	background-color: #B43104;
-	border-radius: 20px;
-	border-bottom:solid 1px  white;
-	border-left:solid 1px  white;
-	border-right:solid 1px  white;
-	display: inline-block;
-	margin:10px;
-}
-.list{
-	margin-top:150px;
-	margin-bottom:150px;
-	text-align:center;
-	width:80%;
-	margin-left:auto;
-	margin-right:auto;
-}
 
-figcaption{
-	text-align: center;
-	color:white;
-}
-
-.righting{
-	position:fixed;
-	right:8%;
-	top:45%;
-	height:50px;
-	width:40px;
-	z-index:10;
-}
-.lefting{
-	position:fixed;
-	left:8%;
-	top:45%;
-	height:50px;
-	width:40px;
-	z-index:10;
-}
-
-.lefting{
-	position:fixed;
-	left:45%;
-	top:30px;
-	height:50px;
-	width:40px;
-	background-color: #fff;
-	border-radius: 20px;
-	border:solid 1px black;
-}	
-}
-
-/*mostrar imagen*/
-#borr{
-	top:0px;
-	left:0px;
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	background-color:  rgba(100,100,100,0.6);
-	z-index:11;	
-}
-#in{
-	height: 450px;
-	width: 650px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 250px;
-	background-color: #B43104;
-	border:3px solid white;
-	border-radius: 7px;
-	position:relative;
-}
-#in figure img{
-	height:300px;
-	margin-left: 20px;
-	margin-top: 40px;
 	border-radius: 7px;
 }
 .butt{
@@ -206,29 +112,7 @@ figcaption{
 .flex{
 	flex:1;
 }
-.flexinit{
-	display:flex;	
-	flex-wrap: wrap;
-}
-.flex>p{
-	color:white;
-	margin-top: 50px;
-	margin-left:25px;
-	margin-right:25px;
-	font-size:1em;
-}
-.flex p:last-of-type{
 
-	margin-left:35%;
-	font-size:1.2em;
-}
-#in>p{
-	color:white;
-	margin-top: 0px;
-	margin-left:200px;
-	font-size:1.4em;
-	text-decoration: underline;
-}
 .hidd{
 	visibility: hidden;
 	position:fixed;
@@ -253,29 +137,6 @@ figcaption{
 .butadd:hover{
 	background-color:#21610B;
 }
-@media (max-width: 1280px) and (max-height: 600px){
-	#in{
-	margin-top: 123px;
-	height:410px;
-}
-#in>p{
-	margin-top:-35px;
-}
-}
-
-#in>p{
-	margin-top:-10px;
-	margin-left:20px;
-	font-size:1.2em;
-}
-
-#in figure img{
-	height:150px;
-	margin-left: 50px;
-	margin-right: 70px;
-	margin-top: 40px;
-	border-radius: 7px;
-}
 .butt{
 	right:-10px;
 	top:-10px;
@@ -286,26 +147,6 @@ figcaption{
 	top:260px;
 	right:40px;
 }
-#pre{
-	position:fixed;
-	top:320px;
-	right:40px;
-}
-}
-
-#in>p{
-	margin-top: -40px;
-	margin-left:20px;
-	margin-right:5px;
-	font-size:1.2em;
-}
-
-.content>div>.most{
-	margin:30px;
-	margin-left:auto;
-	margin-right:auto;
-	color:white;
-} 
 .content .most th{
 	color: white;
 	background-color: #c53104;
@@ -328,22 +169,6 @@ figcaption{
 	border-radius:10px;
 	text-shadow:1px 1px 1px black;
 	display:inline-block;
-}
-#peque{
-	height:40px;
-	
-}
-.cant{
-	position: absolute;
-	height: 15px;
-}
-.su{
-	top:25px;
-	left:30px;
-}
-.ba{
-	bottom:27px;
-	left:32px;
 }
 .relative{
 	position: relative;

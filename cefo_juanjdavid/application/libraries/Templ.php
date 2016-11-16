@@ -7,16 +7,16 @@
 		public static function login(){
 			?>
 		
-			<form class="navbar-form navbar-right" method="post" id="login" autocomplete="off">
-				<div class="form-group">
+			<form class="derecha" method="post" id="login" autocomplete="off">
+				
             		<input placeholder="User" class="form-control" type="text" name="user" required="required" />
-            	<div class="form-group">
-            	</div>
+            	
+            	
 					<input placeholder="Password" class="form-control" type="password" name="password" required="required"/>
-				</div>
-				<div class="form-group">
+				
+				
 					<input type="submit" name="login" class="btn btn-success" value="Login"/>
-           		</div>
+           		
 				
 			</form>
 			<?php 
@@ -61,7 +61,7 @@
 		//PONE EL PIE DE PAGINA
 		public static function footer(){
 			?>
-			<footer class="">
+			<footer>
 				
 					<br/>
 					<span><a href="cefo@......com ">cefo@.....com</span><span> Esta pagina  es un proyecto academico de : </span> <span> David Sanchez y Juanjo guardiola</a></span>

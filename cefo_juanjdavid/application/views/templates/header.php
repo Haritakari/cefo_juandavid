@@ -18,10 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 <script src="<?php echo base_url()?>js/script.js"></script>
   </head>
   <body>
- <nav class="navbar navbar-inverse navbar-fixed-top menu">
-      <div class="container">
+ <nav class="menu">
+      <div >
         
-          </button>
+          
           <div class="izquierda">
 					<span>CEFO</span><br/>
 					<span>VALLES</span>
