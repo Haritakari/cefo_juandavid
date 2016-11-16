@@ -1,0 +1,1 @@
+<?php Templ::footer();?>
