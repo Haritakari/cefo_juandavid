@@ -59,59 +59,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function modificacion(){
 			//si no hay usuario identificado... error
 			if(!Login::getUsuario())
-				throw new Exception('Debes estar identificado para poder modificar tus datos');
+				show_error('Tens que estar identificat per modificar les teves dades',299,'Error , Identificat');
 				
 			//si no llegan los datos a modificar
 			if(empty($_POST['modificar'])){
 				
 				//mostramos la vista del formulario
-				$datos = array();
-				$datos['usuario'] = Login::getUsuario();
-				
-				$this->load_view('view/usuarios/modificacion.php', $datos);
+				$data['usuario'] = Login::getUsuario();
+				$this->load->view('templates/header', $data);
+				$this->load->view('usuarios/modificacion', $data);
+				$this->load->view('templates/footer', $data);
 					
 				//si llegan los datos por POST
 			}else{
 				//recuperar los datos actuales del usuario
 				$u = Login::getUsuario();
-				$conexion = Database::get();
+				
 				
 				//comprueba que el usuario se valide correctamente
-				$p = MD5($conexion->real_escape_string($_POST['password']));
-				if($u->password != $p)
-					throw new Exception('El password no coincide, no se puede procesar la modificación');
+				$p = $_POST['password'];
+				if($u->data_naixement != $p)
+					show_error('El password no coincideix, no es pot procesar la modificació');
 								
 				//recupera el nuevo password (si se desea cambiar)
 				if(!empty($_POST['newpassword']))
-					$u->password = MD5($conexion->real_escape_string($_POST['newpassword']));
+					$u->data_naixement = $_POST['newpassword'];
 				
 				//recupera el nuevo nombre y el nuevo email
-				$u->nombre = $conexion->real_escape_string($_POST['nombre']);
-				$u->email = $conexion->real_escape_string($_POST['email']);
-				$u->apellidos =$conexion->real_escape_string($_POST['apellidos']);
-				$u->telefono = $conexion->real_escape_string($_POST['telefono']);
-				$u->fecha_nacimiento = $conexion->real_escape_string($_POST['fecha_nacimiento']);
-				$u->direccion = $conexion->real_escape_string($_POST['direccion']);
-				$u->dni = $conexion->real_escape_string($_POST['dni']);
-				$u->user = $conexion->real_escape_string($_POST['user']);
-				$u->ciudad = $conexion->real_escape_string($_POST['ciudad']);
-				$u->pais = $conexion->real_escape_string($_POST['pais']);
+				$u->nom = $this->input->post("nom");
+				$u->cognom1 =$this->input->post("cognom1");
+				$u->cognom2 = $this->input->post("cognom2");
+				$u->data_naixement =$this->input->post("naix");
+				$u->dni = $this->input->post("dni");
+				$u->estudis = $this->input->post("estudis");
+				$u->situacio_laboral = $this->input->post("sl");
+				$u->prestacio = $this->input->post("prestacio");
+				$u->telefon_mobil = $this->input->post("tmobil");
+				$u->telefon_fix = $this->input->post("tfixe");
+				$u->email = $this->input->post("email");
 			
 					
 			
 				//modificar el usuario en BDD
 				if(!$u->actualizar())
-					throw new Exception('No se pudo modificar');
+					show_error('No es pot modificar',154,'Error en la modificacio');
 		
 				//hace de nuevo "login" para actualizar los datos del usuario
 				//desde la BDD a la variable de sesión.
-				Login::log_in($u->user, $u->password);
+				Login::log_in($u->dni, $u->data_naixement);
 					
 				//mostrar la vista de éxito
 			
-				$datos['usuario'] = Login::getUsuario();
-				$datos['mensaje'] = 'Modificación OK';
-				$this->load_view('view/exito.php', $datos);
+				$data['usuario'] = Login::getUsuario();
+				$data['mensaje'] = 'Modificació OK';
+				$this->load->view('templates/header', $data);
+				$this->load->view('result/exit', $data);
+				$this->load->view('templates/footer', $data);
 			}
 		}
 		
