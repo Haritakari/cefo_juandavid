@@ -26,21 +26,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}else{
 				//crear una instancia de Usuario
 				$u = new UsuarioModel();
-				
-				
+
 				//tomar los datos que vienen por POST
 				
 				$u->nom = $this->input->post("nom");
 				$u->cognom1 =$this->input->post("cognom1");
 				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("example");
-				$u->dni = $this->input->post("example");
-				$u->estudis = $this->input->post("example");
-				$u->situacio_laboral = $this->input->post("example");
-				$u->prestacio = $this->input->post("example");
-				$u->telefon_mobil = $this->input->post("example");
-				$u->telefon_fix = $this->input->post("example");
-				$u->email = $this->input->post("example");
+				$u->data_naixement =$this->input->post("naix");
+				$u->dni = $this->input->post("dni");
+				$u->estudis = $this->input->post("estudis");
+				$u->situacio_laboral = $this->input->post("sl");
+				$u->prestacio = $this->input->post("prestacio");
+				$u->telefon_mobil = $this->input->post("tmobil");
+				$u->telefon_fix = $this->input->post("tfixe");
+				$u->email = $this->input->post("email");
 
 				//guardar el usuario en BDD
 				if(!$u->guardar())
@@ -49,7 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//mostrar la vista de éxito
 				$data['usuario'] = Login::getUsuario();
 				$data['mensaje'] = 'Operació de registre satisfactoria';
-				$this->load->view('result/exit', $data);
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
 				$this->load->view('templates/footer', $data);

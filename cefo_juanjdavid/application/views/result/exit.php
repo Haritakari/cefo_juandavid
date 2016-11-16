@@ -1,11 +1,7 @@
 
 	<section class="content">
-	
-	      <div class="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-			</div>
+		<h1></h1>
+		<?php echo $mensaje; ?>
 		
 	</section>
-
-<?php Templ::footer(); ?>    
+  

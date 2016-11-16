@@ -15,8 +15,6 @@
 				<input type="text" name="tmobil" required="required" pattern="[0-9]{9}" title="Telefon mobil"/><br/>
 				<label>Data de naixement:</label>
 				<input type="text" name="naix" required="required"/><br/>
-				<label>Direcció:</label>
-				<input type="text" name="direccio" required="required"/><br/>
 				<label>DNI:</label>
 				<input type="text" name="dni" required="required"/><br/>
 				<label>Email:</label>
@@ -28,7 +26,7 @@
 				<label>Prestació</label>
 				<input type="text" name="prestacio" required="required"/><br/>
 			
-				<button class="botoncin" type="submit" name="guardar">Guardar</button><br/>
+				<input class="botoncin" type="submit" name="guardar" value="Guardar"/><br/>
 			</form>
 			</div>
 		</div>
