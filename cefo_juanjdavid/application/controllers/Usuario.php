@@ -26,31 +26,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}else{
 				//crear una instancia de Usuario
 				$u = new UsuarioModel();
-				$conexion = Database::get();
+				
 				
 				//tomar los datos que vienen por POST
-				//real_escape_string evita las SQL Injections
-				$u->nombre = $conexion->real_escape_string($_POST['nombre']);
-				$u->apellido =$conexion->real_escape_string($_POST['apellidos']);
-				$u->telefono = $conexion->real_escape_string($_POST['telefono']);
-				$u->fecha_nacimiento = $conexion->real_escape_string($_POST['fecha_nacimiento']);
-				$u->direccion = $conexion->real_escape_string($_POST['direccion']);
-				$u->dni = $conexion->real_escape_string($_POST['dni']);
-				$u->email = $conexion->real_escape_string($_POST['email']);
-				$u->user = $conexion->real_escape_string($_POST['user']);
-				$u->password = MD5($conexion->real_escape_string($_POST['password']));
-				$u->ciudad = $conexion->real_escape_string($_POST['ciudad']);
-				$u->pais = $conexion->real_escape_string($_POST['pais']);
 				
+				$u->nom = $this->input->post("nom");
+				$u->cognom1 =$this->input->post("cognom1");
+				$u->cognom2 = $this->input->post("cognom2");
+				$u->data_naixement =$this->input->post("example");
+				$u->dni = $this->input->post("example");
+				$u->estudis = $this->input->post("example");
+				$u->situacio_laboral = $this->input->post("example");
+				$u->prestacio = $this->input->post("example");
+				$u->telefon_mobil = $this->input->post("example");
+				$u->telefon_fix = $this->input->post("example");
+				$u->email = $this->input->post("example");
+
 				//guardar el usuario en BDD
 				if(!$u->guardar())
-					throw new Exception('No se pudo registrar el usuario');
+					show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
 				
 				//mostrar la vista de éxito
-				$datos = array();
-				$datos['usuario'] = Login::getUsuario();
-				$datos['mensaje'] = 'Operación de registro completada con éxito';
-				$this->load_view('view/exito.php', $datos);
+				$data['usuario'] = Login::getUsuario();
+				$data['mensaje'] = 'Operació de registre satisfactoria';
+				$this->load->view('result/exit', $data);
+				$this->load->view('templates/header', $data);
+				$this->load->view('result/exit', $data);
+				$this->load->view('templates/footer', $data);
 			}
 		}
 		

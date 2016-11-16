@@ -26,7 +26,7 @@
 			//si piden hacer login, hacemos login
 			if(!empty($_POST['login'])){
 				$u = $_POST['user'];
-				$p = MD5($_POST['password']);
+				$p = ($_POST['password']);
 				self::log_in($u,$p);
 			}
 			
@@ -47,8 +47,8 @@
 		//- Crea la variable de sesión con los datos recuperado
 		public static function log_in($u, $p){
 			$us = new UsuarioModel();
-			$us->user=$u;
-			$us->password=$p;
+			$us->dni=$u;
+			$us->data_naixement=$p;
 			if(!$us->validar()){
 				$mess='No lo has puesto bien xd';
 				$stat=404;
