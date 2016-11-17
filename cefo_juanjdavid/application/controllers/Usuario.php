@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 
 		//PROCEDIMIENTO PARA MODIFICAR UN USUARIO
-		public function modificacion(){
+		public function modificar(){
 			//si no hay usuario identificado... error
 			if(!Login::getUsuario())
 				show_error('Tens que estar identificat per modificar les teves dades',299,'Error , Identificat');
@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//mostramos la vista del formulario
 				$data['usuario'] = Login::getUsuario();
 				$this->load->view('templates/header', $data);
-				$this->load->view('usuarios/modificacion', $data);
+				$this->load->view('usuario/modificacio', $data);
 				$this->load->view('templates/footer', $data);
 					
 				//si llegan los datos por POST
@@ -76,16 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$u = Login::getUsuario();
 				
 				
-				//comprueba que el usuario se valide correctamente
-				$p = $_POST['password'];
-				if($u->data_naixement != $p)
-					show_error('El password no coincideix, no es pot procesar la modificació');
-								
-				//recupera el nuevo password (si se desea cambiar)
-				if(!empty($_POST['newpassword']))
-					$u->data_naixement = $_POST['newpassword'];
 				
-				//recupera el nuevo nombre y el nuevo email
 				$u->nom = $this->input->post("nom");
 				$u->cognom1 =$this->input->post("cognom1");
 				$u->cognom2 = $this->input->post("cognom2");
@@ -111,9 +102,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//mostrar la vista de éxito
 			
 				$data['usuario'] = Login::getUsuario();
-				$data['mensaje'] = 'Modificació OK';
 				$this->load->view('templates/header', $data);
-				$this->load->view('result/exit', $data);
+				$this->load->view('usuario/modificacio', $data);
 				$this->load->view('templates/footer', $data);
 			}
 		}
@@ -126,34 +116,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$u = Login::getUsuario();
 			
 			//asegurarse que el usuario está identificado
-			if(!$u) throw new Exception('Debes estar identificado para poder darte de baja');
+			if(!$u) show_error('Tens que estar identificat per poderte donar de baixa',235,'Error Login');
 			
 			//si no nos están enviando la conformación de baja
 			if(empty($_POST['confirmar'])){	
 				//carga el formulario de confirmación
-				$datos = array();
-				$datos['usuario'] = $u;
-				$this->load_view('view/usuarios/baja.php', $datos);
+	
+				$data['usuario'] = $u;
+				$this->load->view('templates/header', $data);
+				$this->load->view('usuario/baja', $data);
+				$this->load->view('templates/footer', $data);
 		
 			//si nos están enviando la confirmación de baja
 			}else{
 				//validar password
-				$p = MD5(Database::get()->real_escape_string($_POST['password']));
-				if($u->password != $p) 
-					throw new Exception('El password no coincide, no se puede procesar la baja');
+				$p =$_POST['naix'];
+				if($u->data_naixement != $p) 
+					show_error('La data no coincideix, no es pot procesa la baixa',256,'Error en la confirmació');
 				
 				//de borrar el usuario actual en la BDD
 				if(!$u->borrar())
-					throw new Exception('No se pudo dar de baja');
+					show_error('No es pot procesa la baixa',257,'Error al intentar donar de baixa');
 
 				//cierra la sesion
 				Login::log_out();
 					
 				//mostrar la vista de éxito
-				$datos = array();
-				$datos['usuario'] = null;
-				$datos['mensaje'] = 'Eliminado OK';
-				$this->load_view('view/exito.php', $datos);
+				$data['usuario'] = null;
+				$data['mensaje'] = 'Eliminat OK';
+				$this->load->view('templates/header', $data);
+				$this->load->view('result/exit', $data);
+				$this->load->view('templates/footer', $data);
 			}
 		}
 		
