@@ -56,7 +56,7 @@
 					show_error($mess,$stat,$head);
 			}
 			$user=$us->getUsuario();
-			//var_dump($user);
+			
 			
 			$_SESSION['user']=serialize($user[0]);		//solo cojo el primer resultado pues no es como el fetch_object
 		}
@@ -74,7 +74,7 @@
 			//elimina la cookie de sesión
 			$p = session_get_cookie_params();
 			setcookie(session_name(),'',time()-1000,$p['path'],$p['domain'],$p['secure'],$p['httponly']);
-			//header('location:index.php');
+			redirect(base_url().'index.php');
 		}
 	}
 ?>
