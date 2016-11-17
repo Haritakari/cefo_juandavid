@@ -67,12 +67,12 @@ INSERT INTO `cursos` (`id`, `codi`, `id_area`, `nom`, `descripcio`, `hores`, `da
 CREATE TABLE IF NOT EXISTS `preinscripcions` (
   `id_usuari` int(11) NOT NULL,
   `id_curs` int(11) NOT NULL,
-  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_usuari`,`id_curs`),
   KEY `id_curs` (`id_curs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO `preinscripcions` (`id_usuari`, `id_curs`, `data`) VALUES
+INSERT INTO `preinscripcions` (`id_usuari`, `id_curs`, `data_hora`) VALUES
 (2, 1, '2016-11-16 11:39:58'),
 (2, 3, '2016-11-16 11:39:58'),
 (3, 2, '2016-11-16 11:39:58'),

@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			parent::__construct();
 		}
 		//PROCEDIMIENTO PARA REGISTRAR UNA PREINSCRIPCION
-		public function registro(){
+		public function registroP(){
 				
 			//si no llegan los datos a guardar
 			if(empty($_POST['guardar'])){
@@ -19,131 +19,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$curs= new CursModel;
 				$curs= $curs->getCurs($id_curs);
 				$this->load->library('templ');
-				$data['usuario']=$usua;
+				$data['usuario']=$psua;
+				$data['curs']=$curs;
 				$this->load->view('templates/header', $data);
 				$this->load->view('usuario/registro.php', $data);
 				$this->load->view('templates/footer', $data);
 			
 			//si llegan los datos por POST
 			}else{
-				//crear una instancia de Usuario
-				$u = new UsuarioModel();
+				//crear una instancia de Preinscripciones
+				$p = new PreinscripcionsModel();
 
 				//tomar los datos que vienen por POST
 				
-				$u->nom = $this->input->post("nom");
-				$u->cognom1 =$this->input->post("cognom1");
-				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("naix");
-				$u->dni = $this->input->post("dni");
-				$u->estudis = $this->input->post("estudis");
-				$u->situacio_laboral = $this->input->post("sl");
-				$u->prestacio = $this->input->post("prestacio");
-				$u->telefon_mobil = $this->input->post("tmobil");
-				$u->telefon_fix = $this->input->post("tfixe");
-				$u->email = $this->input->post("email");
+				$p->id_usuari = $this->input->post("id_usuari");
+				$p->id_curs = $this->input->post("id_curs");
 
 				//guardar el usuario en BDD
-				if(!$u->guardar())
-					show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
+				if(!$p->guardarP())
+					show_error('No ha pogut enregistrar la Preinscripció',289,'Error en el registre');
 				
 				//mostrar la vista de éxito
 				$data['usuario'] = Login::getUsuario();
-				$data['mensaje'] = 'Operació de registre satisfactoria';
+				$data['mensaje'] = "Operació de registre Preinscripció Curs satisfactoria";
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
 				$this->load->view('templates/footer', $data);
 			}
 		}
 		
-
-		//PROCEDIMIENTO PARA MODIFICAR UN USUARIO
-		public function modificar(){
-			//si no hay usuario identificado... error
-			if(!Login::getUsuario())
-				show_error('Tens que estar identificat per modificar les teves dades',299,'Error , Identificat');
-				
-			//si no llegan los datos a modificar
-			if(empty($_POST['modificar'])){
-				
-				//mostramos la vista del formulario
-				$data['usuario'] = Login::getUsuario();
-				$this->load->view('templates/header', $data);
-				$this->load->view('usuario/modificacio', $data);
-				$this->load->view('templates/footer', $data);
-					
-				//si llegan los datos por POST
-			}else{
-				//recuperar los datos actuales del usuario
-				$u = Login::getUsuario();
-				
-				
-				
-				$u->nom = $this->input->post("nom");
-				$u->cognom1 =$this->input->post("cognom1");
-				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("naix");
-				$u->dni = $this->input->post("dni");
-				$u->estudis = $this->input->post("estudis");
-				$u->situacio_laboral = $this->input->post("sl");
-				$u->prestacio = $this->input->post("prestacio");
-				$u->telefon_mobil = $this->input->post("tmobil");
-				$u->telefon_fix = $this->input->post("tfixe");
-				$u->email = $this->input->post("email");
-			
-					
-			
-				//modificar el usuario en BDD
-				if(!$u->actualizar())
-					show_error('No es pot modificar',154,'Error en la modificacio');
 		
-				//hace de nuevo "login" para actualizar los datos del usuario
-				//desde la BDD a la variable de sesión.
-				Login::log_in($u->dni, $u->data_naixement);
-					
-				//mostrar la vista de éxito
-			
-				$data['usuario'] = Login::getUsuario();
-				$this->load->view('templates/header', $data);
-				$this->load->view('usuario/modificacio', $data);
-				//afegir exit
-				$this->load->view('templates/footer', $data);
-			}
-		}
-		
-		
-		//PROCEDIMIENTO PARA DAR DE BAJA UN USUARIO
+		//PROCEDIMIENTO PARA DAR DE BAJA PREINSCRIPCIONES
 		//solicita confirmación
-		public function baja(){		
-			//recuperar usuario
-			$u = Login::getUsuario();
+		public function baja(){
 			
-			//asegurarse que el usuario está identificado
-			if(!$u) show_error('Tens que estar identificat per poderte donar de baixa',235,'Error Login');
+			//crear una instancia de Preinscripciones
+			$p = new PreinscripcionsModel();
+			
+			$usua=Login::getUsuario();
+			$curs= new CursModel;
+			$curs= $curs->getCurs($id_curs);
 			
 			//si no nos están enviando la conformación de baja
 			if(empty($_POST['confirmar'])){	
 				//carga el formulario de confirmación
 	
-				$data['usuario'] = $u;
+				$data['usuario'] = $usua;
 				$this->load->view('templates/header', $data);
 				$this->load->view('usuario/baja', $data);
 				$this->load->view('templates/footer', $data);
 		
 			//si nos están enviando la confirmación de baja
 			}else{
-				//validar password
-				$p =$_POST['naix'];
-				if($u->data_naixement != $p) 
-					show_error('La data no coincideix, no es pot procesa la baixa',256,'Error en la confirmació');
-				
-				//de borrar el usuario actual en la BDD
-				if(!$u->borrar())
+	
+
+				if(!$p->borrar())
 					show_error('No es pot procesa la baixa',257,'Error al intentar donar de baixa');
 
-				//cierra la sesion
-				Login::log_out();
-					
 				//mostrar la vista de éxito
 				$data['usuario'] = null;
 				$data['mensaje'] = 'Eliminat OK';
