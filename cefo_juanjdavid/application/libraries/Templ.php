@@ -19,13 +19,12 @@
 			?>
 		<form class="derecha" method="post">
 				
-					<span class="logger"> Hola <a href="index.php/usuarioModel/actualizar" title="modificar dades"></span>
-					<span class="logge"><?php echo $usuario->nom;?></a></span>
+					<span class="logger"> Hola <a href="index.php/usuarioModel/actualizar" title="modificar dades"></a></span>
+					<span class="logge"><?php echo $usuario->nom;?></span>
 					<span class="logger"> 	<?php echo ' ('.$usuario->email.')';?>
 					<?php if($usuario->admin) echo ", ets l'administrador ";?></span>
 					<input class="botoncin" type="submit" name="logout" value="Logout" />
-				</span>
-				
+
 		</form>	
 			<?php 
 		}
