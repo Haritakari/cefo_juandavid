@@ -1,16 +1,13 @@
-<section id="content">
+<section class="content">
 			<div>
 			<h2>Formulari per donar de baixa</h2>
-			<p>Per favor, confirma la teva solicitud de baixa introducin la data de naixement</p>
+			<p>Per favor, confirma la teva solicitud de baixa</p><br/><br/>
 		
 			<form method="post" autocomplete="off">
-				<label>User:</label>
-				<input type="text" readonly="readonly" value="<?php echo $usuario->nom;?>" /><br/>
-				
-				<label>Data naixement:</label>
-				<input type="text" name="naix" required="required"/><br/>
-				
-				<label></label>
+				<label>Nom:</label>
+				<span><?php echo $usuario->nom;?></span><br/><br/><br/>
+			
+				<label> Estas segur que vols donar de baixa?</label><br/><br/>
 				<input type="submit" name="confirmar" value="Confirmar"/><br/>
 			</form>
 			</div>
