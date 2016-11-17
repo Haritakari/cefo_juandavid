@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$horari, $torn,$tipus,$requisits;
 			
 		//METODOS
-		//guarda el producto en la BDD
+		
 		public function guardar(){
 			
 			$consulta = "INSERT INTO producto(nombre,caracteristicas,id_tipo,id_proveedor,color,precio,precio_proveedor,stock,imagen)
@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		
 		
-		//actualiza los datos del producto en la BDD
+		
 		public function actualizar(){
 			
 			$consulta = "UPDATE producto
@@ -35,18 +35,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		
 		
-		//elimina el producto de la BDD
+		
 		public function borrar(){
-			
 			$consulta = "DELETE FROM producto WHERE id='$this->id';";
 			return $this->db->query($consulta);
 		}
-		public function calc_query(){
-			$consulta="SELECT * FROM producto";
-			return $this->db->query($consulta)->num_rows();
-			
-		}
-		//este método sirve para recuperar los productos 
 		public function llistar($p=1,$fin=10){
 			
 			$princ=$p;
@@ -56,6 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$lista=$this->db->query($consulta)->custom_result_object('CursModel');
 
 			return $lista;
+		}
+		public function calc_query(){
+			$consulta="SELECT nom,codi,id_area,descripcio,hores,data_inici,data_fi,
+			horari,torn,tipus,requisits	FROM cursos";
+			return $this->db->query($consulta)->num_rows();
+		
 		}
 		
 		public function getCurs($id){

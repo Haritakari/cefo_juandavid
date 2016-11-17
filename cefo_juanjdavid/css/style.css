@@ -61,10 +61,7 @@ li.unem{
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 }
-.content table.adm{
-	margin:50px 40px 10px 40px;
-	color:#2E3B0B;
-}
+
 #pagin{
 	display:inline-block;
 	margin:20px;
@@ -113,19 +110,9 @@ li.unem{
 .content, .content2{
 	text-align: center;
 }
-.lefting img, .righting img{
-	height:100%;	
-	width:100%;
-}
 
-
-	border-radius: 7px;
-}
 .butt{
 	cursor: pointer;
-}
-.flex{
-	flex:1;
 }
 
 .hidd{
@@ -141,30 +128,16 @@ li.unem{
 	top:-20px;
 	height:40px;
 }
-.butadd{
-	padding:10px;
-	margin-bottom:20px;
-	border:solid 1px white;
-	background-color:green;
-	border-radius:5px;
-	color:white;
-}
-.butadd:hover{
-	background-color:#21610B;
-}
+
 .butt{
 	right:-10px;
 	top:-10px;
 	height:40px;
 }
-.butadd{
-	position:fixed;
-	top:260px;
-	right:40px;
-}
+
 .content .most th{
 	color: white;
-	background-color: #c53104;
+	background-color: #04B45F;
 	text-align: center;
 	font-weight: bold;
 }
@@ -172,7 +145,9 @@ li.unem{
 	padding: 10px;
 }
 .content .most tr{
-	background-color: #c53104;
+	background-color: #2E9AFE;
+}.content .most tr:even{
+	background-color: #fff;
 }
 .most img {
 	height:100px;
@@ -199,9 +174,7 @@ li.unem{
 	position: relative;
 	left:17px;
 }
-table td ,table th{
-	border:solid 2px #B43104;
-}
+
 
 .boten{
 	border:solid 1px white;
@@ -227,3 +200,10 @@ table td ,table th{
 	font-variant: small-caps;
 	margin:10px;
 }
+.pagpeque{
+	height:30px;
+}
+.pagpeque img{
+	height:100%;;
+}
+

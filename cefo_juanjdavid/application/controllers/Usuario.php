@@ -9,13 +9,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		//PROCEDIMIENTO PARA REGISTRAR UN USUARIO
 		public function registro(){
-				
+			$usua=Login::getUsuario();
+			if($usua)
+				redirect(base_url().'index.php');
 			//si no llegan los datos a guardar
 			if(empty($_POST['guardar'])){
 				
 				//mostramos la vista del formulario
 				
-				$usua=Login::getUsuario();
+				
 				$this->load->library('templ');
 				$data['usuario']=$usua;
 				$this->load->view('templates/header', $data);
@@ -46,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
 				
 				//mostrar la vista de éxito
-				$data['usuario'] = Login::getUsuario();
+				$data['usuario'] = $usua;
 				$data['mensaje'] = 'Operació de registre satisfactoria';
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
