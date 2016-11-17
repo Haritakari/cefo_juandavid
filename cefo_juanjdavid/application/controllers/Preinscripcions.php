@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 	
-	class Usuario extends CI_Controller {
+	class Preinscripcions extends CI_Controller {
 		
 		public function __construct()
 		{
 			parent::__construct();
 		}
-		//PROCEDIMIENTO PARA REGISTRAR UN USUARIO
+		//PROCEDIMIENTO PARA REGISTRAR UNA PREINSCRIPCION
 		public function registro(){
 				
 			//si no llegan los datos a guardar
@@ -16,6 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//mostramos la vista del formulario
 				
 				$usua=Login::getUsuario();
+				$curs= new CursModel;
+				$curs= $curs->getCurs($id_curs);
 				$this->load->library('templ');
 				$data['usuario']=$usua;
 				$this->load->view('templates/header', $data);
@@ -100,12 +102,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				Login::log_in($u->dni, $u->data_naixement);
 					
 				//mostrar la vista de éxito
-				$m='Modificacio realitzada correctament';
+			
 				$data['usuario'] = Login::getUsuario();
-				$data['mensaje']=$m;
 				$this->load->view('templates/header', $data);
 				$this->load->view('usuario/modificacio', $data);
-				$this->load->view('result/exit2', $data);
+				//afegir exit
 				$this->load->view('templates/footer', $data);
 			}
 		}
@@ -126,14 +127,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 				$data['usuario'] = $u;
 				$this->load->view('templates/header', $data);
-				$this->load->view('usuario/baja1', $data);
+				$this->load->view('usuario/baja', $data);
 				$this->load->view('templates/footer', $data);
 		
 			//si nos están enviando la confirmación de baja
 			}else{
-			
+				//validar password
+				$p =$_POST['naix'];
+				if($u->data_naixement != $p) 
+					show_error('La data no coincideix, no es pot procesa la baixa',256,'Error en la confirmació');
+				
+				//de borrar el usuario actual en la BDD
 				if(!$u->borrar())
-					show_error('No es pot procesa la baixa',157,'Error al intentar donar de baixa');
+					show_error('No es pot procesa la baixa',257,'Error al intentar donar de baixa');
 
 				//cierra la sesion
 				Login::log_out();

@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');	
-	class ProductModel extends CI_Model{
+	class CursModel extends CI_Model{
 		//PROPIEDADES
-		public $nombre, $id, $caracteristicas,$id_tipo,$id_proveedor, $color, $precio,$precio_proveedor, 
-		$stock, $imagen;
+		public $nom, $id, $codi,$id_area,$descripcio, $hores, $data_inici,$data_fi,
+		$horari, $torn,$tipus,$requisits;
 			
 		//METODOS
 		//guarda el producto en la BDD
@@ -47,22 +47,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 		}
 		//este método sirve para recuperar los productos 
-		public function mostrar($p=1,$fin=9){
+		public function llistar($p=1,$fin=10){
 			
 			$princ=$p;
 			$princ2=($princ-1)*$fin;
-			$consulta="SELECT nombre,caracteristicas,precio,imagen,id FROM producto LIMIT $princ2,$fin";
-			$lista=$this->db->query($consulta)->custom_result_object('ProductModel');
+			$consulta="SELECT nom,codi,id_area,descripcio,hores,data_inici,data_fi,
+			horari,torn,tipus,requisits	FROM cursos LIMIT $princ2,$fin";
+			$lista=$this->db->query($consulta)->custom_result_object('CursModel');
 
 			return $lista;
 		}
-		public function showAll($p=1,$fin=20){
-			$query = $this->db->get('vist_prod');
-			return $query->custom_result_object('stdClass');
+		
+		public function getCurs($id){
+			$query = $this->db->get_where('cursos',array('id' => $id));
+			return $query->custom_result_object('CursModel');
 		}
 		
 		
 		
 	}
 
-			

@@ -25,7 +25,7 @@ $usuario = empty($_SESSION['user'])? null : unserialize($_SESSION['user']);
 		else Templ::logout($usuario);
 		Templ::menu($usuario);
 		?>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 	<section class="content">
