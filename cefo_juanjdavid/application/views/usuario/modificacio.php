@@ -28,7 +28,7 @@
 			
 				<input class="botoncin" type="submit" name="modificar" value="Guardar"/><br/>
 				<br/>
-				<a href='<?php echo base_url()?>"index.php/usuario/baja1'>El meu CEFO</a><br/>
+				<a class="botoncin bo2" href='<?php echo base_url()?>index.php/usuario/baja'>Donar de baixa</a><br/>
 			</form>
 			</div>
 		</div>

@@ -74,7 +74,7 @@
 			//elimina la cookie de sesión
 			$p = session_get_cookie_params();
 			setcookie(session_name(),'',time()-1000,$p['path'],$p['domain'],$p['secure'],$p['httponly']);
-			header('location:'.base_url().'index.php');
+			//header('location:index.php');
 		}
 	}
 ?>
