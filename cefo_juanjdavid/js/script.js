@@ -1,3 +1,14 @@
+function myUrl(id) {
+    location.href = "http://localhost/cefo_juandavid/index.php/cursos/curs/"+id+"";
+}
+
+
+
+
+
+
+
+
 
 function mostrar(e){                //para mostrar detalles producto 
 	var src=(e.getAttribute("src"))

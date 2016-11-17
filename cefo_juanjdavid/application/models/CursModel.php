@@ -44,14 +44,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 			$princ=$p;
 			$princ2=($princ-1)*$fin;
-			$consulta="SELECT nom,codi,id_area,descripcio,hores,data_inici,data_fi,
+			$consulta="SELECT id,nom,codi,id_area,descripcio,hores,data_inici,data_fi,
 			horari,torn,tipus,requisits	FROM cursos LIMIT $princ2,$fin";
 			$lista=$this->db->query($consulta)->custom_result_object('CursModel');
 
 			return $lista;
 		}
 		public function calc_query(){
-			$consulta="SELECT nom,codi,id_area,descripcio,hores,data_inici,data_fi,
+			$consulta="SELECT id,nom,codi,id_area,descripcio,hores,data_inici,data_fi,
 			horari,torn,tipus,requisits	FROM cursos";
 			return $this->db->query($consulta)->num_rows();
 		

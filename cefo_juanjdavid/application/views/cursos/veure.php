@@ -14,19 +14,19 @@
 					<th>Data Fi</th>
 					
 				</tr>
+				
 			<?php 
-
 				foreach ($cursos as $pro=>$item){
 					
 					echo "
-						<tr>
+						<tr onclick='myUrl($item->id);'>
 							<td>$item->codi</td>
 							<td>$item->nom</td>
 							<td>$item->descripcio</td>
 							<td>$item->hores</td>
 							<td>$item->data_inici</td>
 							<td>$item->data_fi</td>
-						</tr>";
+						</tr></a>";
 				}?></table>
 				 <?php if($p>=2){?>
 						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p-1 ?>"><figure class="pagpeque"><img src="<?php echo base_url()?>/images/left.png" alt="flecha izquierda" /></figure></a>
