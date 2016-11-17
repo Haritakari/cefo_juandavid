@@ -27,6 +27,8 @@
 				<input type="text" name="prestacio" value="<?php echo $usuario->prestacio ?>" required="required"/><br/>
 			
 				<input class="botoncin" type="submit" name="modificar" value="Guardar"/><br/>
+				<br/>
+				<a href='<?php echo base_url()?>"index.php/usuario/baja1'>El meu CEFO</a><br/>
 			</form>
 			</div>
 		</div>
