@@ -104,6 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$data['usuario'] = Login::getUsuario();
 				$this->load->view('templates/header', $data);
 				$this->load->view('usuario/modificacio', $data);
+				//afegir exit
 				$this->load->view('templates/footer', $data);
 			}
 		}
