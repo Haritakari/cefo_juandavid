@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');	
 	class CursModel extends CI_Model{
 		//PROPIEDADES
-		public $nombre, $id, $caracteristicas,$id_tipo,$id_proveedor, $color, $precio,$precio_proveedor, 
+		public $nom, $id, $caracteristicas,$id_tipo,$id_proveedor, $color, $precio,$precio_proveedor, 
 		$stock, $imagen;
 			
 		//METODOS
