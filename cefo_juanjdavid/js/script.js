@@ -2,14 +2,6 @@ function myUrl(id) {
     location.href = "http://localhost/cefo_juandavid/index.php/cursos/curs/"+id+"";
 }
 
-
-
-
-
-
-
-
-
 function mostrar(e){                //para mostrar detalles producto 
 	var src=(e.getAttribute("src"))
 	var nom=(e.getAttribute("alt"))
@@ -41,10 +33,12 @@ function mostrar(e){                //para mostrar detalles producto
 		'</div>'+
 	'</div>';
 }
+
 function cerrar(){										//cierra ventana
 	var div=document.querySelector("#borr");
 	div.parentNode.removeChild(div);
 }
+
 function change(){										//ver o no ver la direccion de envio alternativa
 	var hidd=document.querySelectorAll('.rev')
 	for(var i=0; i<=hidd.length; i++){
@@ -56,6 +50,7 @@ function change(){										//ver o no ver la direccion de envio alternativa
 		}	
 	}
 }
+
 function mosrar(e){                //para mostrar detalles producto a gente sin registrar (capado en php por si se lo saltan)
 	var src=(e.getAttribute("src"))
 	var nom=(e.getAttribute("alt"))

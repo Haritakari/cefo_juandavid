@@ -17,13 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span>VALLES</span>
 		</div>
 	</div>
-       
+    <div>
         <?php 
 		if(!$usuario) Templ::login();
 		else Templ::logout($usuario);
 		Templ::menu($usuario);
 		?>
        
-      </div>
-    </nav>
-    
+    </div>
+</nav>
