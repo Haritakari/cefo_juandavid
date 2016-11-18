@@ -25,12 +25,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->view('cursos/veure', $data);
 			$this->load->view('templates/footer', $data);
 		}
+		
 		public function curs($id){
+			
+			$this->load->model('PreinscripcionsModel');
+	
 			$curso=new CursModel();
 			$curso=$curso->getCurs($id);
+			$curs=$curso[0];
 			
+			if($usuari=Login::getUsuario()){
+				$preinscripcio=new PreinscripcionsModel();
+				$preinscripcio->id_usuari=$usuari->id;
+				$preinscripcio->id_curs=$curs->id;
+				$data['preinscripcions']=$preinscripcio->getPreinscripcio();
+			}
+				
 			$data['curso']=$curso;
-			$data['usuario']=Login::getUsuario();
+			$data['usuario']=$usuari;
+		
 			$this->load->view('templates/header', $data);
 			$this->load->view('cursos/detall', $data);
 			$this->load->view('templates/footer', $data);

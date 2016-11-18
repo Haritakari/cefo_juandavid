@@ -6,20 +6,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function __construct()
 		{
 			parent::__construct();
+			$this->load->model('PreinscripcionsModel');
 		}
 		//PROCEDIMIENTO PARA REGISTRAR UNA PREINSCRIPCION
-		public function registroP(){
-				
-			//si no llegan los datos a guardar
-			if(!empty($_POST['guardar'])){
-				
+		public function registroP($id_usuari,$id_curs){
+	
 				//crear una instancia de Preinscripciones
 				$p = new PreinscripcionsModel();
-
-				//tomar los datos que vienen por POST
-				
-				$p->id_usuari = $this->input->post("id_usuari");
-				$p->id_curs = $this->input->post("id_curs");
+				$p->id_usuari=$id_usuari;
+				$p->id_curs=$id_curs;
 
 				//guardar el usuario en BDD
 				if(!$p->guardarP())
@@ -31,7 +26,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
 				$this->load->view('templates/footer', $data);
-			}
 		}
 		
 		//PROCEDIMIENTO PARA DAR DE BAJA PREINSCRIPCIONES
