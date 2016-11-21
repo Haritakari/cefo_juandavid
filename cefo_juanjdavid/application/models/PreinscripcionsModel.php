@@ -5,6 +5,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public $id_usuari, $id_curs, $data_hora;
 			
 		//METODOS
+		//lee preinscripciones de un Alumno
+		public function getPreinscripcions(){
+		
+			$consulta = "SELECT * FROM preinscripcions WHERE id_usuari = '$this->id_usuari';";
+					
+			return $this->db->query($consulta);
+		}
+		
+		
 		//guarda la preinscripcions en la BDD
 		public function guardarP(){
 			
