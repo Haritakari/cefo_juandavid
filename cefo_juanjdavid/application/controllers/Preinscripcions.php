@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->load->view('templates/footer', $data);
 			}else{
 				// ESTE USUARIO NO TIENE PREINSCRIPCIONES
-				$data=NULL;
+				$data='';
 				$data['mensaje'] = "Alumne sense preinscripcions a cap curs";
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);// vista preinscripcions alumne

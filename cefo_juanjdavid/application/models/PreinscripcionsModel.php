@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 			$consulta = "SELECT * FROM preinscripcions WHERE id_usuari = '$this->id_usuari';";
 					
-			return $this->db->query($consulta);
+			return $this->db->query($consulta)->custom_result_object('PreinscripcionsModel');
 		}
 		
 		
