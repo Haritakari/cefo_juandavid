@@ -149,5 +149,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 		
+		public function alumne($id){
+			$this->load->model('preinscripcionsModel');
+			$this->load->model('CursModel');
+			$alumne=new UsuarioModel();
+			$alumne->id=$id;
+			$alumne=$alumne->getUsuario2();
+			$pre=new PreinscripcionsModel();
+			$pre->id_usuari=$id;
+			$preinsc=$pre->getPreinscripcions();
+			$curspreins=array();
+			if(count($preinsc)>=1){
+				foreach ($preinsc as $p=>$v){
+					$curs= new CursModel();
+					$curs=$curs->getCurs($v->id_curs);
+					$curspreins[]=$curs[0];
+				}
+			}
+				
+			$data['curspreins']=$curspreins;
+			$data['alumne']=$alumne;
+			$data['usuario']=Login::getUsuario();
+			$this->load->view('templates/header', $data);
+			$this->load->view('usuario/detall', $data);
+			$this->load->view('templates/footer', $data);
+		}
+		
+		
 	}
 ?>

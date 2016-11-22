@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		
 		//PROCEDIMIENTO PARA REGISTRAR UNA PREINSCRIPCION
-		public function registroP($id_usuari,$id_curs){
+		public function registroP($id_curs,$id_usuari){
 	
 				//crear una instancia de Preinscripciones
 				$p = new PreinscripcionsModel();

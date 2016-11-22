@@ -20,7 +20,7 @@
 				<?php 
 			}else{
 				?>
-					ja estas presc al ppohgh
+					ja estas preinscrit aquest curs
 				<?php 
 			}
 		}else{

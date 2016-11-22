@@ -46,8 +46,8 @@
 					<li class="unem"><a href="<?php echo base_url()?>index.php/cursos/llistar">Cursos</a></li>
 					
 		<?php
-				if($usuario){ echo "<li class='unem'><a href='".base_url()."index.php/usuario/modificar'>El meu CEFO</a></li>";
-				if($usuario->admin) echo "<li class='unem'><a href='".base_url()."index.php/admin/showpanel'>Panell de control</a></li>";}?>
+				if($usuario){ echo "<li class='unem'><a href='".base_url()."index.php/usuario/alumne/$usuario->id'>El meu CEFO</a></li>";
+				}?>
 				</ul>
 		<?php 	
 		}

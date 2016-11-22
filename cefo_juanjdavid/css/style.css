@@ -61,6 +61,13 @@ li.unem{
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 }
+.content3{
+	margin-top:-20px;
+	margin-bottom:100px;
+	background-color: #5882FA;
+	border-bottom:solid 2px  white;
+	border-top:solid 2px  white;
+}
 
 #pagin{
 	display:inline-block;
@@ -137,19 +144,19 @@ table{
 	height:40px;
 }
 
-.content .most th{
+.most th{
 	color: white;
 	background-color: #04B45F;
 	text-align: center;
 	font-weight: bold;
 }
-.content .most td, .content .most th{
+ .most td,  .most th{
 	padding: 10px;
 }
-.content .most tr{
+.most tr{
 	background-color: #2E9AFE;
 }
-.content .most tr:hover{
+ .most tr:hover{
 	background-color: #819FF7;
 }
 .cont{
