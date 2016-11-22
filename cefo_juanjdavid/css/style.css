@@ -68,7 +68,11 @@ li.unem{
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 }
-
+table img{
+	height:30px;
+	padding:10px;
+	margin:-10px;
+}
 #pagin{
 	display:inline-block;
 	margin:20px;

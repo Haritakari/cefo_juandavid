@@ -14,6 +14,7 @@
 		<a class="botoncin bo3 " href="<?php echo base_url()?>/index.php/usuario/baja">Donar-te de baixa</a>
 		
 	</div>
+	<?php if (count($curspreins)>=1){?>
 	<div class="content3">
 		<h2>Cursos als que t'has preinscrit</h2>
 		
@@ -31,6 +32,7 @@
 				</tr>
 				
 			<?php 
+			
 				foreach ($curspreins as $pro=>$item){
 					echo "
 						<tr>
@@ -42,9 +44,10 @@
 							<td>$item->data_inici</td>
 							<td>$item->data_fi</td>
 			
-							<td><a href='".base_url()."/index.php/preinscripcions/borrar/$item->id'><img src='".base_url()."/images/borr.png'/></a></td>
+							<td><a href='".base_url()."/index.php/preinscripcions/eliminar/".$alumne[0]->id."/$item->id/'><img src='".base_url()."/images/borr.png'/></a></td>
 						</tr></a>";
 				}?></table>
+		<?php }?>
 		
 		
 	</div>

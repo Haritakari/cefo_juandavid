@@ -81,6 +81,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->load->view('templates/footer', $data);
 			}
 		}
+		public function eliminar($idu,$idc){
+			$this->load->model('CursModel');
+			//crear una instancia de Preinscripciones
+			$p = new PreinscripcionsModel();
+			$p->id_usuari=$idu;
+			$p->id_curs=$idc;
+			if(!$p->borrarPAC())
+				show_error('No es pot eliminar aquesta preinscripcio',257,'Error al intentar eliminar');
+				//mostrar la vista de éxito
 		
+				$this->alumne($idu);
+		}
+		
+		public function alumne($id){
+			$this->load->model('preinscripcionsModel');
+			$this->load->model('CursModel');
+			$alumne=new UsuarioModel();
+			$alumne->id=$id;
+			$alumne=$alumne->getUsuario2();
+			$pre=new PreinscripcionsModel();
+			$pre->id_usuari=$id;
+			$preinsc=$pre->getPreinscripcions();
+			$curspreins=array();
+			if(count($preinsc)>=1){
+				foreach ($preinsc as $p=>$v){
+					$curs= new CursModel();
+					$curs=$curs->getCurs($v->id_curs);
+					$curspreins[]=$curs[0];
+				}
+			}
+		
+			$data['curspreins']=$curspreins;
+			$data['alumne']=$alumne;
+			$data['usuario']=Login::getUsuario();
+			$this->load->view('templates/header', $data);
+			$this->load->view('usuario/detall', $data);
+			$this->load->view('templates/footer', $data);
+		}
 	}
 ?>
