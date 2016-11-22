@@ -73,6 +73,10 @@ table img{
 	padding:10px;
 	margin:-10px;
 }
+.carga{
+	width:100%;
+	text-align:center;
+}
 #pagin{
 	display:inline-block;
 	margin:20px;

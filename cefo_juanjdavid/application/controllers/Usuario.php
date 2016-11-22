@@ -47,13 +47,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				if(!$u->guardar())
 					show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
 				
+				$usua=Login::log_in($u->dni, $u->data_naixement);
 				//mostrar la vista de éxito
-				$data['usuario'] = $usua;
+				$data['usuario'] = Login::getUsuario();
 				$data['mensaje'] = 'Operació de registre satisfactoria';
+				header("Refresh:5");
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
+				$this->load->view('result/cargando', $data);
 				$this->load->view('templates/footer', $data);
 			}
+		}
+		public function registroYpreinscri(){
+			$usua=Login::getUsuario();
+			if($usua)
+				redirect(base_url().'index.php');
+				//si no llegan los datos a guardar
+				if(empty($_POST['guardar'])){
+		
+					//mostramos la vista del formulario
+		
+		
+					$this->load->library('templ');
+					$data['usuario']=$usua;
+					$this->load->view('templates/header', $data);
+					$this->load->view('usuario/registro.php', $data);
+					$this->load->view('templates/footer', $data);
+						
+					//si llegan los datos por POST
+				}else{
+					//crear una instancia de Usuario
+					$u = new UsuarioModel();
+		
+					//tomar los datos que vienen por POST
+		
+					$u->nom = $this->input->post("nom");
+					$u->cognom1 =$this->input->post("cognom1");
+					$u->cognom2 = $this->input->post("cognom2");
+					$u->data_naixement =$this->input->post("naix");
+					$u->dni = $this->input->post("dni");
+					$u->estudis = $this->input->post("estudis");
+					$u->situacio_laboral = $this->input->post("sl");
+					$u->prestacio = $this->input->post("prestacio");
+					$u->telefon_mobil = $this->input->post("tmobil");
+					$u->telefon_fix = $this->input->post("tfixe");
+					$u->email = $this->input->post("email");
+		
+					//guardar el usuario en BDD
+					if(!$u->guardar())
+						show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
+		
+						//mostrar la vista de éxito
+						$data['usuario'] = $usua;
+						$data['mensaje'] = 'Operació de registre satisfactoria';
+						$this->load->view('templates/header', $data);
+						$this->load->view('result/exit', $data);
+						$this->load->view('templates/footer', $data);
+				}
 		}
 		
 
