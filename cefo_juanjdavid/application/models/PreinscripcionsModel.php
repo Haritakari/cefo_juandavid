@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');	
 	class PreinscripcionsModel extends CI_Model{
-		//PROPIEDADES
+		//PROPIEDADES.
 		public $id_usuari, $id_curs, $data_hora;
 			
 		//METODOS

@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->model('PreinscripcionsModel');
 		}
 		
-		//PROCEDIMIENTO PARA LEER PREINSCRIPCIONES (SI LAS HAY)
+		//PROCEDIMIENTO PARA LEER PREINSCRIPCIONES (SI LAS HAY).
 		public function LeerPreinscripciones($id_usuari){
 		
 			//crear una instancia de Preinscripciones
