@@ -51,59 +51,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//mostrar la vista de éxito
 				$data['usuario'] = Login::getUsuario();
 				$data['mensaje'] = 'Operació de registre satisfactoria';
-				header("Refresh:5");
+				header("Refresh:2");
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
 				$this->load->view('result/cargando', $data);
 				$this->load->view('templates/footer', $data);
 			}
 		}
-		public function registroYpreinscri(){
-			$usua=Login::getUsuario();
-			if($usua)
-				redirect(base_url().'index.php');
-				//si no llegan los datos a guardar
-				if(empty($_POST['guardar'])){
-		
-					//mostramos la vista del formulario
-		
-		
-					$this->load->library('templ');
-					$data['usuario']=$usua;
-					$this->load->view('templates/header', $data);
-					$this->load->view('usuario/registro.php', $data);
-					$this->load->view('templates/footer', $data);
-						
-					//si llegan los datos por POST
-				}else{
-					//crear una instancia de Usuario
-					$u = new UsuarioModel();
-		
-					//tomar los datos que vienen por POST
-		
-					$u->nom = $this->input->post("nom");
-					$u->cognom1 =$this->input->post("cognom1");
-					$u->cognom2 = $this->input->post("cognom2");
-					$u->data_naixement =$this->input->post("naix");
-					$u->dni = $this->input->post("dni");
-					$u->estudis = $this->input->post("estudis");
-					$u->situacio_laboral = $this->input->post("sl");
-					$u->prestacio = $this->input->post("prestacio");
-					$u->telefon_mobil = $this->input->post("tmobil");
-					$u->telefon_fix = $this->input->post("tfixe");
-					$u->email = $this->input->post("email");
-		
-					//guardar el usuario en BDD
-					if(!$u->guardar())
-						show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
-		
-						//mostrar la vista de éxito
-						$data['usuario'] = $usua;
-						$data['mensaje'] = 'Operació de registre satisfactoria';
-						$this->load->view('templates/header', $data);
-						$this->load->view('result/exit', $data);
-						$this->load->view('templates/footer', $data);
-				}
+		public function registroYpreinscri($idc){
+			//si no llegan los datos a guardar
+			if(empty($_POST['guardar'])){
+				//mostramos la vista del formulario
+				$this->load->library('templ');
+				$data['usuario']=Login::getUsuario();
+				$this->load->view('templates/header', $data);
+				$this->load->view('usuario/registro.php', $data);
+				$this->load->view('templates/footer', $data);
+			
+			//si llegan los datos por POST
+			}else{
+				//crear una instancia de Usuario
+				$u = new UsuarioModel();
+
+				//tomar los datos que vienen por POST
+				
+				$u->nom = $this->input->post("nom");
+				$u->cognom1 =$this->input->post("cognom1");
+				$u->cognom2 = $this->input->post("cognom2");
+				$u->data_naixement =$this->input->post("naix");
+				$u->dni = $this->input->post("dni");
+				$u->estudis = $this->input->post("estudis");
+				$u->situacio_laboral = $this->input->post("sl");
+				$u->prestacio = $this->input->post("prestacio");
+				$u->telefon_mobil = $this->input->post("tmobil");
+				$u->telefon_fix = $this->input->post("tfixe");
+				$u->email = $this->input->post("email");
+
+				//guardar el usuario en BDD
+				if(!$u->guardar())
+					show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
+				$u=$u->getUsuario();
+				$u=$u[0];
+				$this->load->model('preinscripcionsModel');
+				$preins=new PreinscripcionsModel();
+				$preins->id_curs=$idc;
+				$preins->id_usuari=$u->id;
+				if(!$preins->guardarP())
+					show_error('incorrecte',142,'preinscripcio malament');
+				$usua=Login::log_in($u->dni, $u->data_naixement);
+				//mostrar la vista de éxito
+				$data['usuario'] = Login::getUsuario();
+				$data['mensaje'] = 'Operació de registre satisfactoria';
+				header("Refresh:2; url=http://localhost/cefo_juandavid/index.php");
+				$this->load->view('templates/header', $data);
+				$this->load->view('result/exit', $data);
+				$this->load->view('result/cargando', $data);
+				$this->load->view('templates/footer', $data);
+			}
 		}
 		
 
@@ -191,7 +195,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				Login::log_out();
 					
 				//mostrar la vista de éxito
-				$data['usuario'] = null;
+				$data['usuario'] = NULL;
 				$data['mensaje'] = 'Eliminat OK';
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
@@ -199,14 +203,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 		
-		public function alumne($id){
+		public function alumne(){
+			if(!Login::getUsuario())
+				show_error('Tens que estar identificat ',294,'Error , Identificat');
 			$this->load->model('preinscripcionsModel');
 			$this->load->model('CursModel');
+			$u=Login::getUsuario();
 			$alumne=new UsuarioModel();
-			$alumne->id=$id;
+			$alumne->id=$u->id;
 			$alumne=$alumne->getUsuario2();
 			$pre=new PreinscripcionsModel();
-			$pre->id_usuari=$id;
+			$pre->id_usuari=$u->id;
 			$preinsc=$pre->getPreinscripcions();
 			$curspreins=array();
 			if(count($preinsc)>=1){
@@ -219,7 +226,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 			$data['curspreins']=$curspreins;
 			$data['alumne']=$alumne;
-			$data['usuario']=Login::getUsuario();
+			$data['usuario']=$u;
 			$this->load->view('templates/header', $data);
 			$this->load->view('usuario/detall', $data);
 			$this->load->view('templates/footer', $data);

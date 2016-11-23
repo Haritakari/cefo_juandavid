@@ -44,7 +44,7 @@
 							<td>$item->data_inici</td>
 							<td>$item->data_fi</td>
 			
-							<td><a href='".base_url()."/index.php/preinscripcions/eliminar/".$alumne[0]->id."/$item->id/'><img src='".base_url()."/images/borr.png'/></a></td>
+							<td><a href='".base_url()."/index.php/preinscripcions/eliminar/$item->id/'><img src='".base_url()."/images/borr.png'/></a></td>
 						</tr></a>";
 				}?></table>
 		<?php }?>

@@ -16,7 +16,7 @@
 		if ($usuario){
 			if (!$preinscripcions){
 		?>
-				<a class="botoncin bo3" href="http://localhost/cefo_juandavid/index.php/preinscripcions/registroP/<?php echo $curso[0]->id ?>/<?php echo $usuario->id ?>">Preinscriures</a>
+				<a class="botoncin bo3" href="http://localhost/cefo_juandavid/index.php/preinscripcions/registroP/<?php echo $curso[0]->id ?>">Preinscriures</a>
 				<?php 
 			}else{
 				?>
@@ -24,7 +24,7 @@
 				<?php 
 			}
 		}else{
-			echo "<a class='botoncin bo3' href='http://localhost/cefo_juandavid/index.php/usuario/registro'>Registre</a>";
+			echo "<a class='botoncin bo3' href='http://localhost/cefo_juandavid/index.php/usuario/registroYpreinscri/".$curso[0]->id."'>Registre</a>";
 		}
 				?>
 	</div>

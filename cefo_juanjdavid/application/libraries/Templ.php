@@ -46,7 +46,7 @@
 					<li class="unem"><a href="<?php echo base_url()?>index.php/cursos/llistar">Cursos</a></li>
 					
 		<?php
-				if($usuario){ echo "<li class='unem'><a href='".base_url()."index.php/usuario/alumne/$usuario->id'>El meu CEFO</a></li>";
+				if($usuario){ echo "<li class='unem'><a href='".base_url()."index.php/usuario/alumne'>El meu CEFO</a></li>";
 				}?>
 				</ul>
 		<?php 	
