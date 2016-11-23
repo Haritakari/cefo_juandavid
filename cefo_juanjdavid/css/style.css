@@ -24,6 +24,16 @@ a, a:hover, a:focus{
 .logge{
 	color:red;
 }
+.flex{
+	flex:1;
+	margin-top:20px
+}
+.flex input{
+	margin-bottom:5px;
+}
+.flexi{
+	display:flex;
+}
 .menu {
 	border-bottom:solid 3px  white;
 	position:fixed;
@@ -184,6 +194,10 @@ table{
 }
 h2.det{
 	text-shadow:1px 1px 1px black;
+}
+.alilef{
+	margin-top:30px;
+	text-align:left;
 }
 #col{
 	color:#FF8000;
