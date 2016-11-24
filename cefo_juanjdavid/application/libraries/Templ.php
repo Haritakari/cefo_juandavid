@@ -23,7 +23,7 @@
 					<span class="logge"><?php echo $usuario->nom;?></span>
 					<span class="logger"> 	<?php echo ' ('.$usuario->email.')';?>
 					<?php if($usuario->admin) echo ", ets l'administrador ";?></span>
-					<input class="botoncin" type="submit" name="logout" value="Logout" />
+					<input class="botoncin bo5" type="submit" name="logout" value="Logout" />
 
 		</form>	
 			<?php 

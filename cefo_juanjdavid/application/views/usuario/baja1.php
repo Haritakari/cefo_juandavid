@@ -8,8 +8,8 @@
 				<span><?php echo $usuario->nom;?></span><br/><br/><br/>
 			
 				<label> Estas segur que vols donar de baixa?</label><br/><br/>
-				<a class="botoncin" href="<?php echo base_url()?>/index.php/usuario/alumne/<?php echo $usuario->id;?>">Enrere</a>
-				<input type="submit" name="confirmar" value="Confirmar"/><br/>
+				<a class="botoncin bo1" href="<?php echo base_url()?>/index.php/usuario/alumne/<?php echo $usuario->id;?>">Enrere</a>
+				<input class="botoncin bo3" type="submit" name="confirmar" value="Confirmar"/><br/>
 			</form>
 			</div>
 		</section>

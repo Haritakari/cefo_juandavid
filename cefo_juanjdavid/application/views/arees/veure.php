@@ -3,7 +3,7 @@
 		<div>
 			<h2>Inscriure Árees Formatives </h2>
 
-			<table class="most">
+			<table class="most auto">
 				<tr>
 					<th>Nom</th>
 				</tr>

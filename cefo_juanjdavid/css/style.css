@@ -4,7 +4,7 @@
 }
 
 :root{
-background-color:#9FF781;
+background-color:#65CEAD;
 }
 li{
 		list-style-type:none;
@@ -41,22 +41,25 @@ a, a:hover, a:focus{
 	display:flex;
 }
 .menu {
-	border-bottom:solid 3px  white;
+	border-bottom:solid 2px  white;
 	position:fixed;
 	top:0px;
 	width:100%;
 }
 footer{
-	border-top:solid 3px  white;
+	border-top:solid 2px  white;
 	position:fixed;
 	bottom:0px;
 	width:100%;
 }
 h2{
 	margin:20px;
+	font-variant: small-caps;
+	color:#819FF7;
+	text-shadow: 2px 1px 1px black;
 }
 .menu , footer{
-	background-color: #5882FA;
+	background-color: #74D1ED;
 }
 li.unem{
 		color:white;
@@ -67,20 +70,20 @@ li.unem{
 .content{
 	margin-top:200px;
 	margin-bottom:100px;
-	background-color: #5882FA;
+	background-color: #b9efdd;
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 }
 .content2{
 	margin-top:-20px;
-	background-color: #5882FA;
+	background-color: #b9efdd;
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 }
 .content3{
 	margin-top:-20px;
 	margin-bottom:100px;
-	background-color: #5882FA;
+	background-color: #b9efdd;
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 }
@@ -97,7 +100,6 @@ table img{
 	display:inline-block;
 	margin:20px;
 	padding:10px;
-	border-bottom:solid 1px white;
 	
 	color:white;
 	text-shadow:1px 1px 1px black;
@@ -108,12 +110,15 @@ table img{
 .izquierda{
 	float: left;
 	margin:15px 30px;
-	background-color:#00FF80;
-    border-radius: 40%; 
-    text-shadow: 4px 4px 2px black;
-    color:white;
+	background-color:#b9efdd;
+    border-radius: 20px; 
+    text-shadow: 2px 2px 2px black;
+    color:#819FF7;
    	font-variant: small-caps;
    	font-size: 1.7em;
+   	padding: 10px;
+   	border:solid 2px #E6C4E0;
+   	box-shadow: 2px 2px 5px black;
 }
 .derecha{
 	float: right;
@@ -167,10 +172,16 @@ table{
 	top:-10px;
 	height:40px;
 }
+.auto{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	margin-bottom: 35px;
+}
 
 .most th{
 	color: white;
-	background-color: #04B45F;
+	background-color: #5CBA9C;
 	text-align: center;
 	font-weight: bold;
 }
@@ -178,7 +189,7 @@ table{
 	padding: 10px;
 }
 .most tr{
-	background-color: #2E9AFE;
+	background-color: #74D1ED;
 }
  .most tr:hover{
 	background-color: #819FF7;
@@ -186,7 +197,7 @@ table{
 .cont{
 	margin-top:150px;
 	margin-bottom:100px;
-	background-color: #5882FA;
+	background-color: #b9efdd;
 	border-bottom:solid 2px  white;
 	border-top:solid 2px  white;
 	text-align:left;
@@ -195,7 +206,7 @@ table{
 	font-variant:small-caps;
 	display:inline-block;
 	width:400px;
-	color:white;
+	
 	margin:5px 50px 5px 100px;
 }
 h2.det{
@@ -236,22 +247,37 @@ h2.det{
 	padding:2px;
 }
 .bo1{
-	background-color: #00BFFF;
+	background-color: #BABBDD;
+}
+.bo1:hover{
+	background-color: #A1A3D5;
 }
 .bo2{
 	color:black;
 	background-color: #DF3A01;	
 }
+.bo2:hover{
+	background-color: #A1A3D5;
+}
 .bo3{
-	
-	background-color: #F3F781;
+	background-color: #F4F5AE;
+}
+.bo3:hover{
+	background-color: #E3E57B;
+}
+.bo4:hover{
+	background-color:#74D1ED;
+}
+.bo5:hover{
+	background-color:#b9efdd;
 }
 .botoncin{
 	padding: 5px;
-	border:solid 2px black;
+	border:solid 1px black;
 	border-radius: 5px;
 	font-variant: small-caps;
 	margin:10px;
+	cursor:pointer;
 }
 .bot2{
 	display:inline-block;
