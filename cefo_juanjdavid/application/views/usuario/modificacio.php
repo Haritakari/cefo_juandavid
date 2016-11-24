@@ -1,7 +1,8 @@
 <div class="content">
 		<div>
 			<h2>Formulari per a modificar les teves dades</h2>
-			<form method="post" autocomplete="off">
+			<?php echo validation_errors(); ?>
+			<form method="post" autocomplete="off" action="<? echo base_url();?>validator/validar">
 				<div class="flexi">
 				<div class="flex">
 				<label>Nom:</label>

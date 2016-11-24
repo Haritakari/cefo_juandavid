@@ -9,6 +9,12 @@ background-color:#9FF781;
 li{
 		list-style-type:none;
 }
+input{
+	text-align:center;
+}
+.col{
+	background-color:#FBFBEF;
+}
 body{
 	font-family: arial, verdana;
 	height:100%;        
