@@ -2,25 +2,30 @@
 		<div>
 			<h2>Formulari per a modificar les teves dades</h2>
 			<?php echo validation_errors(); ?>
-			<form method="post" autocomplete="off" action="<? echo base_url();?>validator/validar">
+			<form method="post" autocomplete="off">
 				<div class="flexi">
 				<div class="flex">
 				<label>Nom:</label>
-				<input type="text" name="nom" value="<?php echo $usuario->nom ?>" required="required"/><br/>
+				<input type="text" name="nom" value="<?php echo $usuario->nom ?>" maxlength="15" required="required"  title="de 2 a 15 lletres" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]{2,15}"/><br/>
 				<label>Primer cognom:</label>
-				<input type="text" name="cognom1" value="<?php echo $usuario->cognom1 ?>" required="required"/><br/>
+				<input type="text" name="cognom1" value="<?php echo $usuario->cognom1 ?>" maxlength="15" required="required" title="de 2 a 15 lletres" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]{2,15}"/><br/>
 				<label>Segon cognom:</label>
-				<input type="text" name="cognom2" value="<?php echo $usuario->cognom2 ?>" required="required"/><br/>
+				<input type="text" name="cognom2" value="<?php echo $usuario->cognom2 ?>" maxlength="15" required="required" title="de 2 a 15 lletres" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]{2,15}"/><br/>
 				<label>Telefon fixe:</label>
-				<input type="text" name="tfixe" value="<?php echo $usuario->telefon_fix ?>" required="required" pattern="[0-9]{9}" title="Telefon fixe"/><br/>
+				<input type="text" name="tfixe" value="<?php echo $usuario->telefon_fix ?>" required="required" pattern="[0-9]{5,11}" title="Telefon fixe" /><br/>
 				<label>Telefon mobil:</label>
-				<input type="text" name="tmobil" value="<?php echo $usuario->telefon_mobil ?>" required="required" pattern="[0-9]{9}" title="Telefon mobil"/><br/>
+				<input type="text" name="tmobil" value="<?php echo $usuario->telefon_mobil ?>" required="required" pattern="[0-9]{5,11}" title="Telefon mobil"/><br/>
 				<label>Data de naixement:</label>
-				<input type="text" name="naix" value="<?php echo $usuario->data_naixement ?>" required="required"/><br/>
+				<input class="col" type="text" value="<?php echo $fecha[2] ?>" name="naix3" pattern="[0-3][0-9]{1}" required="required" maxlength="2" placeholder="dia" title="Dia"/><br/>
+				<label></label>
+				<input class="col" type="text" value="<?php echo $fecha[1] ?>" name="naix2" pattern="[0-1][0-9]{1}" required="required" maxlength="2" minlength="2" placeholder="mes" title="Mes"/><br/>
+				<label></label>
+				<input class="col" type="text" value="<?php echo $fecha[0] ?>" name="naix" pattern="[1-2][0-9][0-9][0-9]{1}" required="required" maxlength="4" placeholder="any" title="any"/><br/>
+				
 				<label>DNI:</label>
-				<input type="text" name="dni" value="<?php echo $usuario->dni ?>" required="required"/><br/>
+				<input type="text" name="dni" value="<?php echo $usuario->dni ?>" pattern="[XYZ0-9][0-9]{7}[A-Z]" required="required" title="DNI o NIE"/><br/>
 				<label>Email:</label>
-				<input type="email" name="email" value="<?php echo $usuario->email ?>" required="required"/><br/>
+				<input type="email" name="email" value="<?php echo $usuario->email ?>" required="required" title="Correu Electronic"/><br/>
 				
 				
 			
