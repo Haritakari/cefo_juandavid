@@ -7,7 +7,7 @@
 		public static function login(){
 			?>
 			<form class="derecha" method="post" id="login" autocomplete="off">
-            	<input placeholder="User" class="form-control" type="text" name="user" required="required" />
+            	<input placeholder="Usuari" class="form-control" type="text" name="user" required="required" />
 				<input placeholder="Password" class="form-control" type="password" name="password" required="required"/>
 				<input type="submit" name="login" class="botoncin" value="Login"/>
 			</form>
@@ -48,6 +48,8 @@
 		<?php
 				if($usuario){ echo "<li class='unem'><a href='".base_url()."index.php/usuario/alumne'>El meu CEFO</a></li>";
 				}?>
+				
+				    <li class='unem'><a href="<?php echo base_url()?>index.php/arees/llistar">Árees Formatives</a></li>
 				</ul>
 		<?php 	
 		}
@@ -59,7 +61,7 @@
 			<footer>
 				
 					<br/>
-					<span><a href="cefo@......com ">cefo@.....com</span><span> Aquesta pagina es un projecte academic de  : </span> <span> David Sanchez y Juanjo Guardiola</a></span>
+					<span><a href="cefo@......com "></a>cefo@.....com</span><span> Aquesta pagina es un projecte academic de  : </span> <span> David Sanchez y Juanjo Guardiola></span>
          		
 			</footer>
 
