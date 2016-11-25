@@ -7,9 +7,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		{
 			parent::__construct();
 			$this->load->model('AreesModel');
+			
 		}
 		
-		public function llistar(){
+		public function llistar($id_area=''){
+			$this->load->model('SubscripcionsModel');
+			if($usuari=Login::getUsuario()){
+				$subscripcio=new SubscripcionsModel();
+				$subscripcio->id_usuari=$usuari->id;
+				$subscripcio->id_area=$id_area;
+				$data['subscripcions']=$subscripcio->getSubscripcio();
+			}
+		
 			$arees=new AreesModel();
 			$arees=$arees->llistar();
 	

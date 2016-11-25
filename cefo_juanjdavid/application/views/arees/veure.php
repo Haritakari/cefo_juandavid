@@ -9,6 +9,9 @@
 				</tr>
 				
 			<?php 
+				
+				var_dump($subscripcions);
+			
 				foreach ($arees as $pro=>$item){
 					
 					echo "
