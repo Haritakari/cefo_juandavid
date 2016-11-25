@@ -7,9 +7,9 @@
 		public static function login(){
 			?>
 			<form class="derecha" method="post" id="login" autocomplete="off">
-            	<input placeholder="Usuari" class="form-control" type="text" name="user" required="required" />
-				<input placeholder="Password" class="form-control" type="password" name="password" required="required"/>
-				<input type="submit" name="login" class="botoncin" value="Login"/>
+            	<input class="peq" placeholder="Usuari" class="form-control" type="text" name="user" required="required" />
+				<input class="peq" placeholder="Password" class="form-control" type="password" name="password" required="required"/>
+				<input type="submit" name="login" class="botoncin bo5" value="Login"/>
 			</form>
 			<?php 
 		}

@@ -15,6 +15,10 @@ input{
 .col{
 	background-color:#FBFBEF;
 }
+input.peq{
+	display: inline-block;
+	width: 150px;
+}
 body{
 	font-family: arial, verdana;
 	height:100%;        
