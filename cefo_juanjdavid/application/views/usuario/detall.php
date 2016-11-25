@@ -51,3 +51,30 @@
 		
 		
 	</div>
+	<?php 
+	if(!empty($alusubs))
+	if (count($alusubs)>=1){?>
+	<div class="content3">
+		<h2>Arees formatives a les que t'has subscrit</h2>
+		
+		
+		<table class="most auto">
+				<tr>
+					<th>Nom</th>
+				</tr>
+				
+			<?php 
+				foreach ($alusubs as $pro=>$item){
+					
+					echo "
+						<tr>
+							<td>$item->nom</td>
+							
+							<td onclick='event.stopPropagation();'><a href='".base_url()."index.php/subscripcions/borrar/$item->id'><img src='".base_url()."/images/borr.png'/></a></td>
+						</tr></a>";
+				}?>
+			</table>
+		<?php }?>
+		
+		
+	</div>

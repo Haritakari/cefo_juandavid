@@ -6,9 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 		//METODOS
 		//lee subscripciones de un Alumno
-		public function getSubscripcions($id_usuari){
+		public function getSubscripcions(){
 		
-			$consulta = "SELECT * FROM subscripcions WHERE id_usuari = '$id_usuari';";
+			$consulta = "SELECT * FROM subscripcions WHERE id_usuari = '$this->id_usuari';";
 			
 			return $this->db->query($consulta)->custom_result_object('SubscripcionsModel');
 		}
