@@ -356,13 +356,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		
 		public function alumne(){
-			if(!Login::getUsuario())
+			if(!$u=Login::getUsuario())
 				show_error('Tens que estar identificat ',294,'Error , Identificat');
 			$this->load->model('subscripcionsModel');
 			$this->load->model('preinscripcionsModel');
 			$this->load->model('CursModel');
 			$this->load->model('AreesModel');
-			$u=Login::getUsuario();
+			
 			$alumne=new UsuarioModel();
 			$alumne->id=$u->id;
 			$alumne=$alumne->getUsuario2();
@@ -381,14 +381,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$sub=new SubscripcionsModel();
 			$sub->id_usuari=$u->id;
 			$subscri=$sub->getSubscripcions();
-			var_dump($subscri);
+			
 			$alusubs=array();
 			if(count($subscri)>=1){
 				foreach ($subscri as $p=>$v){
 					$area= new AreesModel();
-					$area=$area->getArea($v->id);
+					$area->id=$v->id_area;
+					$area=$area->getArea();
 					$alusubs[]=$area[0];
 				}
+				
 			}
 			$data['alusubs']=$alusubs;
 			$data['curspreins']=$curspreins;

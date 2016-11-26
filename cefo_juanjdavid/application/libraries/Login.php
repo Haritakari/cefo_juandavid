@@ -50,9 +50,9 @@
 			$us->dni=$u;
 			$us->data_naixement=$p;
 			if(!$us->validar()){
-				$mess='No lo has puesto bien xd';
+				$mess='No esta ben escrita';
 				$stat=404;
-				$head='Error en la identificacion';
+				$head='Identificació incorrecta';
 					show_error($mess,$stat,$head);
 			}
 			$user=$us->getUsuario();
