@@ -10,13 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 		}
 		
-		public function llistar($id_area=''){
+		public function llistar(){
 			$this->load->model('SubscripcionsModel');
 			if($usuari=Login::getUsuario()){
 				$subscripcio=new SubscripcionsModel();
 				$subscripcio->id_usuari=$usuari->id;
-				$subscripcio->id_area=$id_area;
-				$data['subscripcions']=$subscripcio->getSubscripcio();
+				$data['subscripcions']=$subscripcio->getSubscripcions();
 			}
 		
 			$arees=new AreesModel();

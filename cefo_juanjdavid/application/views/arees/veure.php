@@ -9,17 +9,26 @@
 				</tr>
 				
 			<?php 
-				
-				var_dump($subscripcions);
-			
 				foreach ($arees as $pro=>$item){
-					
 					echo "
 						<tr onclick='Mrl($item->id)';>
 							<td>$item->nom</td>
 							
-							<td onclick='event.stopPropagation();'><a class='botoncin bo3'href='".base_url()."index.php/subscripcions/inscriure/$item->id'>Inscriures</a></td>
-						</tr></a>";
+							<td onclick='event.stopPropagation();'>";
+							$sw1=0;
+							if(!$usuario)
+								echo "<a class='botoncin bo3'href='".base_url()."index.php/usuari/registre3/$item->id'>Registrarse</a>";
+							else{
+								
+								foreach ($subscripcions as $p=>$v){
+									if ($v->id_area == $item->id){
+										echo "JA ESTAS SUBSCRIPT"; $sw1=1;
+									}
+								}
+								if ($sw1==0)
+										echo "<a class='botoncin bo3'href='".base_url()."index.php/subscripcions/inscriure/$item->id'>Inscriures</a>";
+							}
+										echo "</td></tr>";
 				}?>
 			</table>
 		</div>
