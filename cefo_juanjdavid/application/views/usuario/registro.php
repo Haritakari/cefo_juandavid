@@ -22,7 +22,7 @@
 				<label></label>
 				<input class="col" type="text" name="naix" pattern="[1-2][0-9][0-9][0-9]{1}" required="required" maxlength="4" placeholder="any" title="any"/><br/>
 				<label>DNI:</label>								
-				<input type="text" name="dni" pattern="[XYZ0-9][0-9]{7}[A-Z]" required="required" title="DNI o NIE"/><br/>
+				<input type="text" name="dni" pattern="[XYZ0-9][0-9]{7}[A-Z]" required="required" title="DNI o NIE Lletra en mayuscula"/><br/>
 				<label>Email:</label>
 				<input type="email" name="email" required="required" title="Correu Electronic"/><br/>
 				
@@ -37,21 +37,21 @@
 					<option value="4">Titol Universitari</option>
 				</select><br/><br/><br/>
 				<label>Situació laboral</label>
-				<select name="sl">
+				<select name="sl" required="required">
 					<option value="">Selecciona</option>
 					<option value="1">Aturat</option>
 					<option value="2">Actiu</option>
 					<option value="3">Altres</option>
 				</select><br/><br/><br/>
 				<label>Prestació</label>
-				<select name="prestacio">
+				<select name="prestacio" required="required">
 					<option value="">Selecciona</option>	
 					<option value="1">Si</option>
 					<option value="2">No</option>
 				</select><br/><br/><br/>
 			</div>
 			</div>
-			<input class="botoncin" type="submit" name="guardar" value="Guardar"/><br/>
+			<input class="botoncin bo3" type="submit" name="guardar" value="Guardar"/><br/>
 			</form>
 			</div>
 		</div>

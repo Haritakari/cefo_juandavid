@@ -17,7 +17,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			//si no llegan los datos a guardar
 			if(empty($_POST['guardar'])){
 				//mostramos la vista del formulario
-				$this->load->library('templ');
 				$data['usuario']=$usua;
 				$this->load->view('templates/header', $data);
 				$this->load->view('usuario/registro.php', $data);
@@ -128,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				if($this->form_validation->run()===FALSE){
 					$data['titulo']='Validacion de formularios';
 					$data['contenido']='formularios';
-					$data['usuario']=$usua;
+					$data['usuario']=$u;
 					$this->load->view('templates/header', $data);
 					$this->load->view('usuario/registro.php', $data);
 					$this->load->view('templates/footer', $data);

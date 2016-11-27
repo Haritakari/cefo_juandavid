@@ -2,7 +2,8 @@
 
 		<div>
 			<h2>Inscriure Árees Formatives </h2>
-
+			<br><br>
+			<p>Si vols que t'avisem cuan tinguem cursos d'alguna area especifica, subscriu-te </p>
 			<table class="most auto">
 				<tr>
 					<th>Nom</th>
@@ -22,11 +23,11 @@
 								
 								foreach ($subscripcions as $p=>$v){
 									if ($v->id_area == $item->id){
-										echo "JA ESTAS SUBSCRIPT"; $sw1=1;
+										echo "<span class='small'>Ja estas subscrit<span>"; $sw1=1;
 									}
 								}
 								if ($sw1==0)
-										echo "<a class='botoncin bo3'href='".base_url()."index.php/subscripcions/inscriure/$item->id'>Inscriures</a>";
+										echo "<a class='botoncin bo3'href='".base_url()."index.php/subscripcions/inscriure/$item->id'>Subscriures</a>";
 							}
 										echo "</td></tr>";
 				}?>
