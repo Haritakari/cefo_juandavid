@@ -17,7 +17,7 @@
 							<td onclick='event.stopPropagation();'>";
 							$sw1=0;
 							if(!$usuario)
-								echo "<a class='botoncin bo3'href='".base_url()."index.php/usuari/registre3/$item->id'>Registrarse</a>";
+								echo "<a class='botoncin bo3'href='".base_url()."index.php/usuario/registroYsubscri/$item->id'>Registrarse</a>";
 							else{
 								
 								foreach ($subscripcions as $p=>$v){

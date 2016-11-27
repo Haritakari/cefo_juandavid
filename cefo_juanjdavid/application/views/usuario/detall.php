@@ -70,7 +70,7 @@
 						<tr>
 							<td>$item->nom</td>
 							
-							<td onclick='event.stopPropagation();'><a href='".base_url()."index.php/subscripcions/borrar/$item->id'><img src='".base_url()."/images/borr.png'/></a></td>
+							<td onclick='event.stopPropagation();'><a href='".base_url()."index.php/subscripcions/eliminar/$item->id'><img src='".base_url()."/images/borr.png'/></a></td>
 						</tr></a>";
 				}?>
 			</table>

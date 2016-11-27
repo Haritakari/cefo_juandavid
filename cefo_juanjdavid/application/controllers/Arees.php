@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$area->nom = $this->input->post("nom");
 				//modificar el area en BDD
 				if(!$area->actualitzar())
-					show_error('No es pot modificar',159,'Error en la modificacio');
+					show_error('No es pot modificar',404,'Error en la modificacio');
 			$data['area']=$area;
 			$data['usuario']=Login::getUsuario();
 			$data['mensaje']='Area modificada correctament';
@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$area->nom = $this->input->post("nom");
 				//modificar el area en BDD
 				if(!$area->guardar())
-					show_error('No es pot crear aquesta area formativa',162,'Error al crear');
+					show_error('No es pot crear aquesta area formativa',404,'Error al crear');
 		
 					
 					$data['usuario']=Login::getUsuario();
@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			else{
 				//borrar el area en BDD
 				if(!$area->borrar())
-					show_error('No es pot borrar aquesta area formativa',163,'Error al borrar');
+					show_error('No es pot borrar aquesta area formativa',404,'Error al borrar');
 					
 					$arees=new AreesModel();
 					$arees=$arees->llistar();

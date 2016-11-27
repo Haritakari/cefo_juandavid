@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function LeerSubscripciones(){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 			//crear una instancia de Subscripciones
 			$p = new SubscripcionsModel();
 			$p->id_usuari=$u->id;
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function inscriure($id_area){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 				//crear una instancia de Subscripciones
 				$p = new SubscripcionsModel();
 				
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				//guardar el usuario en BDD
 				if(!$p->guardarS())
-					show_error('No ha pogut enregistrar la Subscripció',289,'Error en el registre');
+					show_error('No ha pogut enregistrar la Subscripció',404,'Error en el registre');
 				
 				//mostrar la vista de éxito
 				$data['usuario'] =$u;
@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function baja(){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 			//crear una instancia de Preinscripciones
 			$p = new SubscripcionsModel();
 			
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//carga el formulario de confirmación
 		
 				if(!$p->borrarSAS())
-					show_error('No es pot procesa la baixa',257,'Error al intentar donar de baixa');
+					show_error('No es pot procesa la baixa',404,'Error al intentar donar de baixa');
 
 				//mostrar la vista de éxito
 				$data['usuario'] = $u;
@@ -88,60 +88,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->load->view('templates/footer', $data);
 			}
 		}
-		public function eliminar($idc){
+	public function eliminar($ida){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
-			$this->load->model('SubscripcionsModel');
-			//crear una instancia de Subscripciones
-			$p = new SubscripcionsModel();
+				show_error('Tens que estar identificat',404,'Error , Identificat');
+			$this->load->model('AreesModel');
+			//crear una instancia de Preinscripciones
+			$s = new SubscripcionsModel();
 			
-			$p->id_usuari=$u->id;
-			$p->id_area=$ida;
-			if(!$p->borrarPAC())
-				show_error('No es pot eliminar aquesta Subscripcio',257,'Error al intentar eliminar');
+			$s->id_usuari=$u->id;
+			$s->id_area=$ida;
+			if(!$s->borrarSAS())
+				show_error('No es pot eliminar aquesta subscripcio',404,'Error al intentar eliminar');
 				//mostrar la vista de éxito
 		
 				$this->alumne($u->id);
 		}
-		
 		private function alumne($id){
-			$this->load->model('SubscripcionsModel');
+		
+			if(!$u=Login::getUsuario())
+				show_error('Tens que estar identificat ',404,'Error , Identificat');
+			$this->load->model('subscripcionsModel');
+			$this->load->model('preinscripcionsModel');
+			$this->load->model('CursModel');
 			$this->load->model('AreesModel');
+			
 			$alumne=new UsuarioModel();
-			$alumne->id=$id;
+			$alumne->id=$u->id;
 			$alumne=$alumne->getUsuario2();
-			$sub=new SubscripcionsModel();
-			$sub->id_usuari=$id;
-			$subscri=$sub->getSubscripcions();
-			$subscripcio=array();
-			if(count($subscri)>=1){
-				foreach ($subscri as $p=>$v){
-					$subscripcio[]=$subscri[0];
+			
+			$pre=new PreinscripcionsModel();
+			$pre->id_usuari=$u->id;
+			$preinsc=$pre->getPreinscripcions();
+			$curspreins=array();
+			if(count($preinsc)>=1){
+				foreach ($preinsc as $p=>$v){
+					$curs= new CursModel();
+					$curs=$curs->getCurs($v->id_curs);
+					$curspreins[]=$curs[0];
 				}
 			}
-		
-			$data['Subscrialumne']=$subscripcio;
+			$sub=new SubscripcionsModel();
+			$sub->id_usuari=$u->id;
+			$subscri=$sub->getSubscripcions();
+			
+			$alusubs=array();
+			if(count($subscri)>=1){
+				foreach ($subscri as $p=>$v){
+					$area= new AreesModel();
+					$area->id=$v->id_area;
+					$area=$area->getArea();
+					$alusubs[]=$area[0];
+				}	
+			}
+			$data['alusubs']=$alusubs;
+			$data['curspreins']=$curspreins;
 			$data['alumne']=$alumne;
-			$data['usuario']=Login::getUsuario();
+			$data['usuario']=$u;
 			$this->load->view('templates/header', $data);
 			$this->load->view('usuario/detall', $data);
 			$this->load->view('templates/footer', $data);
 		}
-		
-			/*public function llistar(){
-			$u=Login::getUsuario();
-			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
-			
-			$subscrip=new SubscripcionsModel();
-			$subscripcio=$subscrip->getSubscripcions($u->id_usuari);
-
-			$data['subscripcions']=$subscripcio;
-			$data['usuario']=$u;
-			$this->load->view('templates/header', $data);
-			$this->load->view('subscripcions/veure', $data);
-			$this->load->view('templates/footer', $data);
-		}*/
 	}
 ?>
