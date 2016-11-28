@@ -27,9 +27,9 @@
 						</tr></a>";
 				}?></table>
 				 <?php if($p>=2){?>
-						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p-1 ?>"></a><figure class="pagpeque"><img class="i" src="<?php echo base_url()?>/images/left.png" alt="flecha izquierda" /></figure>
+						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p-1 ?>"><figure class="pagpeque"><img class="i" src="<?php echo base_url()?>/images/left.png" alt="flecha izquierda" /></figure></a>
 			<?php }if($p<$numpag){?>
-						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p+1 ?>"></a><figure class="pagpeque"><img class="d" src="<?php echo base_url()?>/images/right.png" alt="flecha derecha" /></figure>
+						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p+1 ?>"><figure class="pagpeque"><img class="d" src="<?php echo base_url()?>/images/right.png" alt="flecha derecha" /></figure></a>
 			<?php }	
 								
 				echo "<br/><br/><span id='pagin'> Pagina $p de $numpag</span>";

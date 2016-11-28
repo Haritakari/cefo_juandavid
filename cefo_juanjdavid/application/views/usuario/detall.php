@@ -2,10 +2,22 @@
 	<h2>Detalls alumnes</h2>
 		<label class="det">Nom complert:</label><span>	<?php echo $alumne[0]->nom; echo" ". $alumne[0]->cognom1; echo" ". $alumne[0]->cognom2 ;?></span><br/>
 		<label class="det">DNI:</label><span>	<?php echo $alumne[0]->dni;?></span><br/>
-		<label class="det">Estudis</label>	<span><?php echo $alumne[0]->estudis;?></span><br/>
+		<label class="det">Estudis</label>	<span>
+		<?php   if ($alumne[0]->estudis==1) echo "Sense estudis";
+				if ($alumne[0]->estudis==2) echo "EGB o ESO";
+				if ($alumne[0]->estudis==3) echo "CFGSuperior o Batxillerat";
+				if ($alumne[0]->estudis==4) echo "Titol Universitari";
+		?></span><br/>
 		<label class="det">Data de Naixement:</label><span>	<?php echo $alumne[0]->data_naixement;?></span><br/>
-		<label class="det">Situacio laboral:</label>	<span><?php echo $alumne[0]->situacio_laboral;?></span><br/>
-		<label class="det">Prestacio:</label><span>	<?php echo $alumne[0]->prestacio;?></span><br/>
+		<label class="det">Situacio laboral:</label>	<span>
+		<?php if($alumne[0]->situacio_laboral==1)echo "Aturat";
+			  if($alumne[0]->situacio_laboral==2)echo "Actiu";
+			  if($alumne[0]->situacio_laboral==3)echo "Altres";
+		?></span><br/>
+		<label class="det">Prestacio:</label><span>
+		<?php if ($alumne[0]->prestacio==1)echo "Si";
+			  if ($alumne[0]->prestacio==2)echo "No";
+		?></span><br/>
 		<label class="det">Telefon mobil:</label><span>	<?php echo $alumne[0]->telefon_mobil;?></span><br/>
 		<label class="det">Telefon fixe:</label><span>	<?php echo $alumne[0]->telefon_fix;?></span><br/>
 		<label class="det">Email:</label>	<span><?php echo $alumne[0]->email;?></span><br/>
