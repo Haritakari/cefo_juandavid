@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function LeerPreinscripciones(){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 			//crear una instancia de Preinscripciones
 			$p = new PreinscripcionsModel();
 			$p->id_usuari=$u->id;
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function registroP($id_curs){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 				//crear una instancia de Preinscripciones
 				$p = new PreinscripcionsModel();
 				
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				//guardar el usuario en BDD
 				if(!$p->guardarP())
-					show_error('No ha pogut enregistrar la Preinscripció',289,'Error en el registre');
+					show_error('No ha pogut enregistrar la Preinscripció',404,'Error en el registre');
 				
 				//mostrar la vista de éxito
 				$data['usuario'] =$u;
@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function baja(){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 			//crear una instancia de Preinscripciones
 			$p = new PreinscripcionsModel();
 			
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//carga el formulario de confirmación
 		
 				if(!$p->borrar())
-					show_error('No es pot procesa la baixa',257,'Error al intentar donar de baixa');
+					show_error('No es pot procesa la baixa',404,'Error al intentar donar de baixa');
 
 				//mostrar la vista de éxito
 				$data['usuario'] = $u;
@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function eliminar($idc){
 			$u=Login::getUsuario();
 			if(!$u)
-				show_error('Tens que estar identificat',294,'Error , Identificat');
+				show_error('Tens que estar identificat',404,'Error , Identificat');
 			$this->load->model('CursModel');
 			//crear una instancia de Preinscripciones
 			$p = new PreinscripcionsModel();
@@ -99,20 +99,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$p->id_usuari=$u->id;
 			$p->id_curs=$idc;
 			if(!$p->borrarPAC())
-				show_error('No es pot eliminar aquesta preinscripcio',257,'Error al intentar eliminar');
+				show_error('No es pot eliminar aquesta preinscripcio',404,'Error al intentar eliminar');
 				//mostrar la vista de éxito
 		
 				$this->alumne($u->id);
 		}
-		
 		private function alumne($id){
+		
+			if(!$u=Login::getUsuario())
+				show_error('Tens que estar identificat ',404,'Error , Identificat');
+			$this->load->model('subscripcionsModel');
 			$this->load->model('preinscripcionsModel');
 			$this->load->model('CursModel');
+			$this->load->model('AreesModel');
+			
 			$alumne=new UsuarioModel();
-			$alumne->id=$id;
+			$alumne->id=$u->id;
 			$alumne=$alumne->getUsuario2();
+			
 			$pre=new PreinscripcionsModel();
-			$pre->id_usuari=$id;
+			$pre->id_usuari=$u->id;
 			$preinsc=$pre->getPreinscripcions();
 			$curspreins=array();
 			if(count($preinsc)>=1){
@@ -122,10 +128,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$curspreins[]=$curs[0];
 				}
 			}
-		
+			$sub=new SubscripcionsModel();
+			$sub->id_usuari=$u->id;
+			$subscri=$sub->getSubscripcions();
+			
+			$alusubs=array();
+			if(count($subscri)>=1){
+				foreach ($subscri as $p=>$v){
+					$area= new AreesModel();
+					$area->id=$v->id_area;
+					$area=$area->getArea();
+					$alusubs[]=$area[0];
+				}	
+			}
+			$data['alusubs']=$alusubs;
 			$data['curspreins']=$curspreins;
 			$data['alumne']=$alumne;
-			$data['usuario']=Login::getUsuario();
+			$data['usuario']=$u;
 			$this->load->view('templates/header', $data);
 			$this->load->view('usuario/detall', $data);
 			$this->load->view('templates/footer', $data);

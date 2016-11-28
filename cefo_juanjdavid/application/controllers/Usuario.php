@@ -17,7 +17,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			//si no llegan los datos a guardar
 			if(empty($_POST['guardar'])){
 				//mostramos la vista del formulario
-				$this->load->library('templ');
 				$data['usuario']=$usua;
 				$this->load->view('templates/header', $data);
 				$this->load->view('usuario/registro.php', $data);
@@ -66,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				else {
 					//guardar el usuario en BDD
 					if(!$u->guardar())
-					 show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
+					 show_error('No ha pogut enregistrar les dades',404,'Error en el registre');
 					Login::log_in($u->dni, $u->data_naixement);
 					$data['titulo']='Validacion Correcta';
 					$data['contenido']='formulario correcto';
@@ -128,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				if($this->form_validation->run()===FALSE){
 					$data['titulo']='Validacion de formularios';
 					$data['contenido']='formularios';
-					$data['usuario']=$usua;
+					$data['usuario']=$u;
 					$this->load->view('templates/header', $data);
 					$this->load->view('usuario/registro.php', $data);
 					$this->load->view('templates/footer', $data);
@@ -136,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				else {
 					//guardar el usuario en BDD
 					if(!$u->guardar())
-						show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
+						show_error('No ha pogut enregistrar les dades',404,'Error en el registre');
 						
 						$u=$u->getUsuario();
 						$u=$u[0];
@@ -145,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						$preins->id_curs=$idc;
 						$preins->id_usuari=$u->id;
 						if(!$preins->guardarP())
-							show_error('incorrecte',142,'preinscripcio malament');
+							show_error('incorrecte',404,'preinscripcio malament');
 						Login::log_in($u->dni, $u->data_naixement);
 						$data['titulo']='Validacion Correcta';
 						$data['contenido']='formulario correcto';
@@ -159,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 			}
 		}
-		public function registroYsubscri($idc){
+		public function registroYsubscri($ida){
 			$this->load->library('form_validation');
 			//si no llegan los datos a guardar
 			if(empty($_POST['guardar'])){
@@ -215,16 +214,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				else {
 					//guardar el usuario en BDD
 					if(!$u->guardar())
-						show_error('No ha pogut enregistrar les dades',289,'Error en el registre');
+						show_error('No ha pogut enregistrar les dades',404,'Error en el registre');
 		
 						$u=$u->getUsuario();
 						$u=$u[0];
 						$this->load->model('subscripcionsModel');
 						$subscri=new SubscripcionsModel();
-						$subscri->id_curs=$idc;
+						$subscri->id_area=$ida;
 						$subscri->id_usuari=$u->id;
 						if(!$subscri->guardarS())
-							show_error('incorrecte',142,'subscripcio malament');
+							show_error('incorrecte',404,'subscripcio malament');
 							Login::log_in($u->dni, $u->data_naixement);
 							$data['titulo']='Validacion Correcta';
 							$data['contenido']='formulario correcto';
@@ -245,7 +244,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->library('form_validation');
 			//si no hay usuario identificado... error
 			if(!$u=Login::getUsuario())
-				show_error('Tens que estar identificat per modificar les teves dades',299,'Error , Identificat');
+				show_error('Tens que estar identificat per modificar les teves dades',404,'Error , Identificat');
 				
 			//si no llegan los datos a modificar
 			if(empty($_POST['modificar'])){
@@ -300,7 +299,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$u->telefon_fix = $this->input->post("tfixe");
 				$u->email = $this->input->post("email");
 				if(!$u->actualizar())
-					show_error('No es pot modificar',154,'Error en la modificacio');
+					show_error('No es pot modificar',404,'Error en la modificacio');
 		
 					Login::log_in($u->dni, $u->data_naixement);
 					$fecha=explode("-", $u->data_naixement);
@@ -326,7 +325,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$u = Login::getUsuario();
 			
 			//asegurarse que el usuario está identificado
-			if(!$u) show_error('Tens que estar identificat per poderte donar de baixa',235,'Error Login');
+			if(!$u) show_error('Tens que estar identificat per poderte donar de baixa',404,'Error Login');
 			
 			//si no nos están enviando la conformación de baja
 			if(empty($_POST['confirmar'])){	
@@ -341,7 +340,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}else{
 			
 				if(!$u->borrar())
-					show_error('No es pot procesa la baixa',157,'Error al intentar donar de baixa');
+					show_error('No es pot procesa la baixa',404,'Error al intentar donar de baixa');
 
 				//cierra la sesion
 				Login::log_out();
@@ -356,13 +355,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		
 		public function alumne(){
-			if(!Login::getUsuario())
-				show_error('Tens que estar identificat ',294,'Error , Identificat');
+			if(!$u=Login::getUsuario())
+				show_error('Tens que estar identificat ',404,'Error , Identificat');
 			$this->load->model('subscripcionsModel');
 			$this->load->model('preinscripcionsModel');
 			$this->load->model('CursModel');
 			$this->load->model('AreesModel');
-			$u=Login::getUsuario();
+			
 			$alumne=new UsuarioModel();
 			$alumne->id=$u->id;
 			$alumne=$alumne->getUsuario2();
@@ -381,14 +380,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$sub=new SubscripcionsModel();
 			$sub->id_usuari=$u->id;
 			$subscri=$sub->getSubscripcions();
-			var_dump($subscri);
+			
 			$alusubs=array();
 			if(count($subscri)>=1){
 				foreach ($subscri as $p=>$v){
 					$area= new AreesModel();
-					$area=$area->getArea($v->id);
+					$area->id=$v->id_area;
+					$area=$area->getArea();
 					$alusubs[]=$area[0];
 				}
+				
 			}
 			$data['alusubs']=$alusubs;
 			$data['curspreins']=$curspreins;
