@@ -7,7 +7,7 @@
 			<table class="most auto">
 				<tr>
 					<th>Nom</th>
-					<th>Opcions</th>
+					<th></th>
 				</tr>
 				
 			<?php 
