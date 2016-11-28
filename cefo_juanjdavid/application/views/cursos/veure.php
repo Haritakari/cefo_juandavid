@@ -8,7 +8,6 @@
 				<tr>
 					<th>Codi</th>
 					<th>Nom</th>
-					<th>Descripcio</th>
 					<th>Hores</th>
 					<th>Data Inici</th>
 					<th>Data Fi</th>
@@ -22,16 +21,15 @@
 						<tr class='point' onclick='myUrl($item->id);'>
 							<td>$item->codi</td>
 							<td>$item->nom</td>
-							<td>$item->descripcio</td>
 							<td>$item->hores</td>
 							<td>$item->data_inici</td>
 							<td>$item->data_fi</td>
 						</tr></a>";
 				}?></table>
 				 <?php if($p>=2){?>
-						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p-1 ?>"><figure class="pagpeque"><img class="i" src="<?php echo base_url()?>/images/left.png" alt="flecha izquierda" /></figure></a>
+						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p-1 ?>"></a><figure class="pagpeque"><img class="i" src="<?php echo base_url()?>/images/left.png" alt="flecha izquierda" /></figure>
 			<?php }if($p<$numpag){?>
-						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p+1 ?>"><figure class="pagpeque"><img class="d" src="<?php echo base_url()?>/images/right.png" alt="flecha derecha" /></figure></a>
+						<a  href="<?php echo base_url()?>index.php/cursos/llistar/<?php echo $p+1 ?>"></a><figure class="pagpeque"><img class="d" src="<?php echo base_url()?>/images/right.png" alt="flecha derecha" /></figure>
 			<?php }	
 								
 				echo "<br/><br/><span id='pagin'> Pagina $p de $numpag</span>";

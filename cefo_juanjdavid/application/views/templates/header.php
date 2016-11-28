@@ -13,8 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <nav class="menu">
 	<div>
       	<div class="izquierda">
-					<span>CEFO</span><br/>
-					<span>VALLES</span>
+      	
+      		 <img src="images/cifo.png" alt=""  width="100"> 
+      		 
+					<!--  <span>CEFO</span><br/>
+					<span>VALLES</span>  -->
 		</div>
 	</div>
     <div>
