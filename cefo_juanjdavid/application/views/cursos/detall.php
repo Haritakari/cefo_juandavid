@@ -23,8 +23,8 @@
 				<td><label class="det">Descripció del curs:</label></td><td><?php echo $curso[0]->descripcio;?></td>
 			</tr>
 		</table>
-		<br/>
-		<a class="botoncin bo1 bot2" href="http://localhost/cefo_juandavid/index.php/cursos/llistar">Tornar a cursos</a>
+		<br/><br/>
+		<a class="botoncin bo1" href="http://localhost/cefo_juandavid/index.php/cursos/llistar">Tornar a cursos</a>
 		
 		<?php 
 		if ($usuario){
@@ -34,11 +34,11 @@
 				<?php 
 			}else{
 				?>
-					ja estas preinscrit aquest curs
+					<span class='color'>Ja estas preinscrit en aquest curs</span>
 				<?php 
 			}
 		}else{
 			echo "<a class='botoncin bo3' href='http://localhost/cefo_juandavid/index.php/usuario/registroYpreinscri/".$curso[0]->id."'>Registre</a>";
 		}
-				?>
+				?><br/><br/>
 	</div>

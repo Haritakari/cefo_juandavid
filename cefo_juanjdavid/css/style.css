@@ -237,6 +237,19 @@ table{
 	box-shadow:5px 5px 5px #848484;
 	text-align:center;
 }
+.cont table{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:left;
+}
+.color{
+	color:yellow;
+	font-variant:small-caps;
+	text-shadow:1px 1px 1px black;
+	display:inline-block;
+	margin-left:40px;
+	font-size:1.2em;
+}
 .det{
 	font-variant:small-caps;
 	display:inline-block;

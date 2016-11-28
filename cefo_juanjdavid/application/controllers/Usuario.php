@@ -27,35 +27,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//crear una instancia de Usuario
 				$u = new UsuarioModel();
 				//tomar los datos que vienen por POST
-
-				/*$u->nom = $this->input->post("nom");
-				$u->cognom1 =$this->input->post("cognom1");
-				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("naix").'/'.$this->input->post("naix2").'/'.$this->input->post("naix3");
-				$u->dni = $this->input->post("dni");
-				$u->estudis = $this->input->post("estudis");
-				$u->situacio_laboral = $this->input->post("sl");
-				$u->prestacio = $this->input->post("prestacio");
-				$u->telefon_mobil = $this->input->post("tmobil");
-				$u->telefon_fix = $this->input->post("tfixe");
-				$u->email = $this->input->post("email");*/
 				
-				//*************************************************************************************************
-				
-				$u->nom = $this->db->escape($this->input->post("nom"));
-				$u->cognom1 =$this->db->escape($this->input->post("cognom1"));
-				$u->cognom2 = $this->db->escape($this->input->post("cognom2"));
-				$u->data_naixement =intval($this->input->post("naix")).'-'.intval($this->input->post("naix2")).'-'.intval($this->input->post("naix3"));
-				$u->dni = $this->db->escape($this->input->post("dni"));
-				$u->estudis = intval($this->input->post("estudis"));
-				$u->situacio_laboral = intval($this->input->post("sl"));
-				$u->prestacio = intval($this->input->post("prestacio"));
-				$u->telefon_mobil = intval($this->input->post("tmobil"));
-				$u->telefon_fix = intval($this->input->post("tfixe"));
-				$u->email = $this->db->escape($this->input->post("email"));
-				
-				//*************************************************************************************************
-				
+				$u->nom = $this->db->escape($this->input->post('nom'));
+				$u->cognom1 =$this->db->escape($this->input->post('cognom1'));
+				$u->cognom2 = $this->db->escape($this->input->post('cognom2'));
+				$u->data_naixement =$this->input->post('naix').'-'.$this->input->post('naix2').'-'.$this->input->post('naix3');
+				$u->dni =$this->input->post('dni');
+				$u->estudis = intval($this->input->post('estudis'));
+				$u->situacio_laboral = intval($this->input->post('sl'));
+				$u->prestacio = intval($this->input->post('prestacio'));
+				$u->telefon_mobil = intval($this->input->post('tmobil'));
+				$u->telefon_fix = intval($this->input->post('tfixe'));
+				$u->email = $this->db->escape($this->input->post('email'));
 				//Validacion por php  
 				$this->form_validation->set_rules('nom','Nom','required|min_length[2]|alpha|max_length[15]');
 				$this->form_validation->set_rules('cognom1','primer cognom','required|min_length[2]|alpha|max_length[15]');
@@ -72,8 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->form_validation->set_rules('email','Correu electronic','required|valid_email');
 					
 				if($this->form_validation->run()===FALSE){
-					$data['titulo']='Validacion de formularios';
-					$data['contenido']='formularios';
+					
 					$data['usuario']=$usua;
 					$this->load->view('templates/header', $data);
 					$this->load->view('usuario/registro.php', $data);
@@ -83,10 +65,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					//guardar el usuario en BDD
 					if(!$u->guardar())
 					 show_error('No ha pogut enregistrar les dades',404,'Error en el registre');
+					
 					Login::log_in($u->dni, $u->data_naixement);
-					$data['titulo']='Validacion Correcta';
-					$data['contenido']='formulario correcto';
-					$data['usuario'] = Login::getUsuario();
+					$data['usuario']=$usua;
 					$data['mensaje'] = 'Operació de registre satisfactoria';
 					header("Refresh:2; url=http://localhost/cefo_juandavid/index.php");
 					$this->load->view('templates/header', $data);
@@ -112,35 +93,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$u = new UsuarioModel();
 
 				//tomar los datos que vienen por POST
+		
+				$u->nom = $this->db->escape($this->input->post('nom'));
+				$u->cognom1 =$this->db->escape($this->input->post('cognom1'));
+				$u->cognom2 = $this->db->escape($this->input->post('cognom2'));
+				$u->data_naixement =$this->input->post('naix').'-'.$this->input->post('naix2').'-'.$this->input->post('naix3');
+				$u->dni =$this->input->post('dni');
+				$u->estudis = intval($this->input->post('estudis'));
+				$u->situacio_laboral = intval($this->input->post('sl'));
+				$u->prestacio = intval($this->input->post('prestacio'));
+				$u->telefon_mobil = intval($this->input->post('tmobil'));
+				$u->telefon_fix = intval($this->input->post('tfixe'));
+				$u->email = $this->db->escape($this->input->post('email'));
 				
-				/*$u->nom = $this->input->post("nom");
-				$u->cognom1 =$this->input->post("cognom1");
-				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("naix").'/'.$this->input->post("naix2").'/'.$this->input->post("naix3");
-				$u->dni = $this->input->post("dni");
-				$u->estudis = $this->input->post("estudis");
-				$u->situacio_laboral = $this->input->post("sl");
-				$u->prestacio = $this->input->post("prestacio");
-				$u->telefon_mobil = $this->input->post("tmobil");
-				$u->telefon_fix = $this->input->post("tfixe");
-				$u->email = $this->input->post("email");*/
-				
-				//*************************************************************************************************
-				
-				$u->nom = $this->db->escape($this->input->post("nom"));
-				$u->cognom1 =$this->db->escape($this->input->post("cognom1"));
-				$u->cognom2 = $this->db->escape($this->input->post("cognom2"));
-				$u->data_naixement =intval($this->input->post("naix")).'-'.intval($this->input->post("naix2")).'-'.intval($this->input->post("naix3"));
-				$u->dni = $this->db->escape($this->input->post("dni"));
-				$u->estudis = intval($this->input->post("estudis"));
-				$u->situacio_laboral = intval($this->input->post("sl"));
-				$u->prestacio = intval($this->input->post("prestacio"));
-				$u->telefon_mobil = intval($this->input->post("tmobil"));
-				$u->telefon_fix = intval($this->input->post("tfixe"));
-				$u->email = $this->db->escape($this->input->post("email"));
-				
-				//*************************************************************************************************
-	
 				//Validacion por php
 				$this->form_validation->set_rules('nom','Nom','required|min_length[2]|alpha|max_length[15]');
 				$this->form_validation->set_rules('cognom1','primer cognom','required|min_length[2]|alpha|max_length[15]');
@@ -168,9 +133,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					//guardar el usuario en BDD
 					if(!$u->guardar())
 						show_error('No ha pogut enregistrar les dades',404,'Error en el registre');
-						
+						$u->dni=str_replace("'","",$u->dni);
 						$u=$u->getUsuario();
 						$u=$u[0];
+						
 						$this->load->model('preinscripcionsModel');
 						$preins=new PreinscripcionsModel();
 						$preins->id_curs=$idc;
@@ -221,17 +187,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 				//*************************************************************************************************
 				
-				$u->nom = $this->db->escape($this->input->post("nom"));
-				$u->cognom1 =$this->db->escape($this->input->post("cognom1"));
-				$u->cognom2 = $this->db->escape($this->input->post("cognom2"));
-				$u->data_naixement =intval($this->input->post("naix")).'-'.intval($this->input->post("naix2")).'-'.intval($this->input->post("naix3"));
-				$u->dni = $this->db->escape($this->input->post("dni"));
-				$u->estudis = intval($this->input->post("estudis"));
-				$u->situacio_laboral = intval($this->input->post("sl"));
-				$u->prestacio = intval($this->input->post("prestacio"));
-				$u->telefon_mobil = intval($this->input->post("tmobil"));
-				$u->telefon_fix = intval($this->input->post("tfixe"));
-				$u->email = $this->db->escape($this->input->post("email"));
+				$u->nom = $this->db->escape($this->input->post('nom'));
+				$u->cognom1 =$this->db->escape($this->input->post('cognom1'));
+				$u->cognom2 = $this->db->escape($this->input->post('cognom2'));
+				$u->data_naixement =$this->input->post('naix').'-'.$this->input->post('naix2').'-'.$this->input->post('naix3');
+				$u->dni =$this->input->post('dni');
+				$u->estudis = intval($this->input->post('estudis'));
+				$u->situacio_laboral = intval($this->input->post('sl'));
+				$u->prestacio = intval($this->input->post('prestacio'));
+				$u->telefon_mobil = intval($this->input->post('tmobil'));
+				$u->telefon_fix = intval($this->input->post('tfixe'));
+				$u->email = $this->db->escape($this->input->post('email'));
 				
 				//*************************************************************************************************
 		
@@ -251,9 +217,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->form_validation->set_rules('email','Correu electronic','required|valid_email');
 		
 				if($this->form_validation->run()===FALSE){
-					$data['titulo']='Validacion de formularios';
-					$data['contenido']='formularios';
-					$data['usuario']=$usua;
+					
+					
 					$this->load->view('templates/header', $data);
 					$this->load->view('usuario/registro.php', $data);
 					$this->load->view('templates/footer', $data);
@@ -262,7 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					//guardar el usuario en BDD
 					if(!$u->guardar())
 						show_error('No ha pogut enregistrar les dades',404,'Error en el registre');
-		
+						$u->dni=str_replace("'","",$u->dni);
 						$u=$u->getUsuario();
 						$u=$u[0];
 						$this->load->model('subscripcionsModel');
@@ -330,46 +295,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$this->load->view('templates/footer', $data);
 			}
 			else {
-				
-				/*
-				$u->nom = $this->input->post("nom");
-				$u->cognom1 =$this->input->post("cognom1");
-				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("naix").'-'.$this->input->post("naix2").'-'.$this->input->post("naix3");
-				$u->dni = $this->input->post("dni");
-				$u->estudis = $this->input->post("estudis");
-				$u->situacio_laboral = $this->input->post("sl");
-				$u->prestacio = $this->input->post("prestacio");
-				$u->telefon_mobil = $this->input->post("tmobil");
-				$u->telefon_fix = $this->input->post("tfixe");
-				$u->email = $this->input->post("email");*/
-				
-				//*************************************************************************************************
-				
-				$u->nom = $this->db->escape($this->input->post("nom"));
-				$u->cognom1 =$this->db->escape($this->input->post("cognom1"));
-				$u->cognom2 = $this->db->escape($this->input->post("cognom2"));
-				$u->data_naixement =intval($this->input->post("naix")).'-'.intval($this->input->post("naix2")).'-'.intval($this->input->post("naix3"));
-				$u->dni = $this->db->escape($this->input->post("dni"));
-				$u->estudis = intval($this->input->post("estudis"));
-				$u->situacio_laboral = intval($this->input->post("sl"));
-				$u->prestacio = intval($this->input->post("prestacio"));
-				$u->telefon_mobil = intval($this->input->post("tmobil"));
-				$u->telefon_fix = intval($this->input->post("tfixe"));
-				$u->email = $this->db->escape($this->input->post("email"));
-				
-				//*************************************************************************************************
+			
+				$u->nom = $this->db->escape($this->input->post('nom'));
+				$u->cognom1 =$this->db->escape($this->input->post('cognom1'));
+				$u->cognom2 = $this->db->escape($this->input->post('cognom2'));
+				$u->data_naixement =$this->input->post('naix').'-'.$this->input->post('naix2').'-'.$this->input->post('naix3');
+				$u->dni =$this->input->post('dni');
+				$u->estudis = intval($this->input->post('estudis'));
+				$u->situacio_laboral = intval($this->input->post('sl'));
+				$u->prestacio = intval($this->input->post('prestacio'));
+				$u->telefon_mobil = intval($this->input->post('tmobil'));
+				$u->telefon_fix = intval($this->input->post('tfixe'));
+				$u->email = $this->db->escape($this->input->post('email'));
 				
 				if(!$u->actualizar())
 					show_error('No es pot modificar',404,'Error en la modificacio');
-		
-					Login::log_in($u->dni, $u->data_naixement);
+
 					$fecha=explode("-", $u->data_naixement);
 					$data['fecha']=$fecha;
-					$data['titulo']='Validacion Correcta';
-					$data['contenido']='formulario correcto';
 					$m='Modificacio realitzada correctament';
-					$data['usuario'] = Login::getUsuario();
+					$u=$u->getUsuario2();
+					$data['usuario'] = $u[0];
 					$data['mensaje']=$m;
 					$this->load->view('templates/header', $data);
 					$this->load->view('usuario/modificacio', $data);
