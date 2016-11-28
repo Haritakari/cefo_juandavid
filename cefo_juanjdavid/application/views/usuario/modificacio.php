@@ -54,7 +54,7 @@
 			</div>
 				
 			</div>
-				<input class="botoncin bo4" type="submit" name="modificar" value="Guardar"/>
+				<input class="botoncin bo1" type="submit" name="modificar" value="Guardar"/>
 				
 				<a class="botoncin bo3" href='<?php echo base_url()?>/index.php/usuario/alumne/<?php echo $usuario->id;?>'>Enrere</a><br/>
 			</form>
