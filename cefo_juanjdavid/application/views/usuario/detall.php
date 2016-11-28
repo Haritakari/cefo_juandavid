@@ -21,10 +21,10 @@
 		<label class="det">Telefon mobil:</label><span>	<?php echo $alumne[0]->telefon_mobil;?></span><br/>
 		<label class="det">Telefon fixe:</label><span>	<?php echo $alumne[0]->telefon_fix;?></span><br/>
 		<label class="det">Email:</label>	<span><?php echo $alumne[0]->email;?></span><br/>
-		
-		<a class="botoncin bo1 bot2" href="<?php echo base_url()?>/index.php/usuario/modificar">Modificar les teves dades</a>
+		<br><br>
+		<a class="botoncin bo1" href="<?php echo base_url()?>/index.php/usuario/modificar">Modificar les teves dades</a>
 		<a class="botoncin bo3 " href="<?php echo base_url()?>/index.php/usuario/baja">Donar-te de baixa</a>
-		
+		<br><br>
 	</div>
 	<?php if (count($curspreins)>=1){?>
 	<div class="content3">
