@@ -32,8 +32,11 @@ $usuario = empty($_SESSION['user'])? null : unserialize($_SESSION['user']);
 	
 	      <div class="container">
 		<h1><?php echo $heading; ?></h1>
+		<br><br>
 		<?php echo $message; ?>
-			</div>
+		<br><br><br><br>
+		<a class="botoncin bo1 bot2" onclick='window.history.back()'>Tornar enrere</a>
+			<br><br></div>
 		
 	</section>
 
