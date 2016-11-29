@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		
 		//PROCEDIMIENTO PARA REGISTRAR UNA SUBSCRIPCION
-		public function inscriure($id_area){
+		public function inscriure($ida){
 			$u=Login::getUsuario();
 			if(!$u)
 				show_error('Tens que estar identificat',404,'Error , Identificat');
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$p = new SubscripcionsModel();
 				
 				$p->id_usuari=$u->id;
-				$p->id_area=$id_area;
+				$p->id_area=intval($ida);
 
 				//guardar el usuario en BDD
 				if(!$p->guardarS())

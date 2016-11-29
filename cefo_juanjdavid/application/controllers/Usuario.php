@@ -173,19 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 				//tomar los datos que vienen por POST
 		
-				/* $u->nom = $this->input->post("nom");
-				$u->cognom1 =$this->input->post("cognom1");
-				$u->cognom2 = $this->input->post("cognom2");
-				$u->data_naixement =$this->input->post("naix").'/'.$this->input->post("naix2").'/'.$this->input->post("naix3");
-				$u->dni = $this->input->post("dni");
-				$u->estudis = $this->input->post("estudis");
-				$u->situacio_laboral = $this->input->post("sl");
-				$u->prestacio = $this->input->post("prestacio");
-				$u->telefon_mobil = $this->input->post("tmobil");
-				$u->telefon_fix = $this->input->post("tfixe");
-				$u->email = $this->input->post("email");*/
-				
-				//*************************************************************************************************
+		
 				
 				$u->nom = $this->db->escape($this->input->post('nom'));
 				$u->cognom1 =$this->db->escape($this->input->post('cognom1'));
@@ -199,8 +187,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$u->telefon_fix = intval($this->input->post('tfixe'));
 				$u->email = $this->db->escape($this->input->post('email'));
 				
-				//*************************************************************************************************
-		
+				
 				//Validacion por php
 				$this->form_validation->set_rules('nom','Nom','required|min_length[2]|alpha|max_length[15]');
 				$this->form_validation->set_rules('cognom1','primer cognom','required|min_length[2]|alpha|max_length[15]');

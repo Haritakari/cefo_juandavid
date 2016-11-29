@@ -36,6 +36,11 @@ input{
 .col{
 	background-color:#FBFBEF;
 }
+.bien{
+	margin-left:50px;
+	margin-right:50px;
+	margin-bottom:50px;
+}
 input.peq{
 	display: inline-block;
 	width: 150px;
@@ -157,7 +162,8 @@ table img{
 }
 .derecha{
 	float: right;
-	margin:15px 30px;
+	margin-bottom:30px;
+	margin-right:30px;
 }
 .content form label{
 	display: inline-block;

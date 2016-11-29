@@ -12,9 +12,9 @@
 				<label>Segon cognom:</label>
 				<input type="text" name="cognom2" maxlength="15" required="required" title="de 2 a 15 lletres" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]{2,15}"/><br/>
 				<label>Telefon fixe:</label>
-				<input type="text" name="tfixe" required="required" pattern="[0-9]{5,11}" title="Telefon fixe"/><br/>
+				<input type="text" name="tfixe" maxlength="11" required="required" pattern="[0-9]{5,11}" title="Telefon fixe"/><br/>
 				<label>Telefon mobil:</label>
-				<input type="text" name="tmobil" required="required" pattern="[0-9]{5,11}" title="Telefon mobil"/><br/>
+				<input type="text" name="tmobil" required="required" maxlength="11" pattern="[0-9]{5,11}" title="Telefon mobil"/><br/>
 				<label>Data de naixement:</label>
 				<input class="col" type="text" name="naix3" pattern="[0-3][0-9]{1}" required="required" maxlength="2" placeholder="dia" title="Dia"/><br/>
 				<label></label>

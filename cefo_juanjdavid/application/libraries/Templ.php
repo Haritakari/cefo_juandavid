@@ -7,8 +7,8 @@
 		public static function login(){
 			?>
 			<form class="derecha" method="post" id="login" autocomplete="off">
-            	<input class="peq" placeholder="Usuari" class="form-control" type="text" name="user" required="required" />
-				<input class="peq" placeholder="Password" class="form-control" type="password" name="password" required="required"/>
+            	<input class="peq" placeholder="DNI" class="form-control" type="text" name="user" required="required" />
+				<input class="peq" placeholder="Data Naixement" class="form-control" type="password" name="password" required="required"/>
 				<input type="submit" name="login" class="botoncin bo5" value="Login"/>
 			</form>
 			<?php 
@@ -62,7 +62,7 @@
 				
 					<br/>
 					<span><a href="cifo@......com ">cefo@.....com</span></a><span> Aquesta pagina es un projecte academic de  : </span> <span> David Sanchez y Juanjo Guardiola></span>
-         		
+         			<a class="derecha" href="<?php echo base_url()?>index.php/pages/privacidad">Politica de privacitat i avis legal</a>
 			</footer>
 
   </body>

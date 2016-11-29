@@ -18,5 +18,12 @@ class Pages extends CI_Controller {
 		$this->load->view('pages/'.$page, $data);
 		$this->load->view('templates/footer', $data);
 	}
+	public function privacidad(){
+		
+		$data['usuario']=Login::getUsuario();
+		$this->load->view('templates/header', $data);
+		$this->load->view('pages/privacitat', $data);
+		$this->load->view('templates/footer', $data);
+	}
 	
 }

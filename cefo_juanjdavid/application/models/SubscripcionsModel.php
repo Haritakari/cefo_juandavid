@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		//este método sirve para recuperar una subscripcion de un alumno
 		public function getSubscripcio(){
 		
-			$consulta="SELECT * FROM subscripcions WHERE id_usuari='$this->id_usuari' AND id_area='$this->id_area';";
+			$consulta="SELECT * FROM subscripcions WHERE id_usuari='$this->id_usuari' AND id_area='intval$this->id_area';";
 				
 			return $this->db->query($consulta)->custom_result_object('SubscripcionsModel');
 		}
