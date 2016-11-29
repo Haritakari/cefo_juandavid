@@ -43,21 +43,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if(!$u)
 				show_error('Tens que estar identificat',404,'Error , Identificat');
 				//crear una instancia de Subscripciones
-				$p = new SubscripcionsModel();
+				$subscri = new SubscripcionsModel();
 				
-				$p->id_usuari=$u->id;
-				$p->id_area=intval($ida);
+				$subscri->id_area=$ida;
+				$subscri->id_usuari=$u->id;
+				
 
 				//guardar el usuario en BDD
-				if(!$p->guardarS())
+				if(!$subscri->guardarS())
 					show_error('No ha pogut enregistrar la Subscripció',404,'Error en el registre');
-				
+					header("Refresh:0; url=http://localhost/cefo_juandavid/index.php/arees/llistar");
 				//mostrar la vista de éxito
-				$data['usuario'] =$u;
+				/*$data['usuario'] =$u;
 				$data['mensaje'] = "Operació de registre Subscripció de l'Area satisfactoria";
 				$this->load->view('templates/header', $data);
 				$this->load->view('result/exit', $data);
-				$this->load->view('templates/footer', $data);
+				$this->load->view('templates/footer', $data);*/
 		}
 		
 		//PROCEDIMIENTO PARA DAR DE BAJA SUBSCRIPCIONES

@@ -21,7 +21,7 @@
 				<input class="col" type="text" name="naix2" pattern="[0-1][0-9]{1}" required="required" maxlength="2" placeholder="mes" title="Mes"/><br/>
 				<label></label>
 				<input class="col" type="text" name="naix" pattern="[1-2][0-9][0-9][0-9]{1}" required="required" maxlength="4" placeholder="any" title="any"/><br/>
-				<label>DNI:</label>								
+				<label>DNI o NIE:</label>								
 				<input type="text" name="dni" maxlength="9" pattern="[XYZ0-9][0-9]{7}[A-Z]" required="required" title="DNI o NIE Lletra en mayuscula"/><br/>
 				<label>Email:</label>
 				<input type="email" name="email" required="required" title="Correu Electronic"/><br/>
