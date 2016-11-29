@@ -8,7 +8,6 @@
 				<tr>
 					<th>Codi</th>
 					<th>Nom</th>
-					<th>Descripcio</th>
 					<th>Hores</th>
 					<th>Data Inici</th>
 					<th>Data Fi</th>
@@ -22,7 +21,6 @@
 						<tr class='point' onclick='myUrl($item->id);'>
 							<td>$item->codi</td>
 							<td>$item->nom</td>
-							<td>$item->descripcio</td>
 							<td>$item->hores</td>
 							<td>$item->data_inici</td>
 							<td>$item->data_fi</td>

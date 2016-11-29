@@ -7,6 +7,7 @@
 			<table class="most auto">
 				<tr>
 					<th>Nom</th>
+					<th></th>
 				</tr>
 				
 			<?php 
@@ -23,7 +24,7 @@
 								
 								foreach ($subscripcions as $p=>$v){
 									if ($v->id_area == $item->id){
-										echo "<span class='small'>Ja estas subscrit<span>"; $sw1=1;
+										echo "<span class='small'><b>Ja estas subscrit</b><span>"; $sw1=1;
 									}
 								}
 								if ($sw1==0)

@@ -9,6 +9,10 @@ background-color:#F2F2F2;
 li{
 		list-style-type:none;
 }
+.most{
+	margin-left:auto;
+	margin-right:auto;
+}
 .rel{
 	position:relative;
 }
@@ -115,6 +119,7 @@ li.unem{
 	margin-bottom:100px;
 	background-color: #b9efdd;
 	box-shadow:5px 5px 5px #848484;
+	text-align:center;
 }
 table img{
 	height:30px;
@@ -230,7 +235,20 @@ table{
 	margin-bottom:100px;
 	background-color: #b9efdd;
 	box-shadow:5px 5px 5px #848484;
+	text-align:center;
+}
+.cont table{
+	margin-left:auto;
+	margin-right:auto;
 	text-align:left;
+}
+.color{
+	color:yellow;
+	font-variant:small-caps;
+	text-shadow:1px 1px 1px black;
+	display:inline-block;
+	margin-left:40px;
+	font-size:1.2em;
 }
 .det{
 	font-variant:small-caps;
@@ -326,3 +344,7 @@ h2.det{
 	height:30px;
 }
 
+@media print { 
+ /* All your print styles go here */
+ #header, #footer, #nav { display: none !important; } 
+}
