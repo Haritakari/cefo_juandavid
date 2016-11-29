@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div>
       	<div class="izquierda">
       	
-      		 <img src="images/cifo.png" alt=""  width="100"> 
+      		 <img src="images/soc1.jpg" alt=""  height="50" width="120"> 
       		 
 					<!--  <span>CEFO</span><br/>
 					<span>VALLES</span>  -->

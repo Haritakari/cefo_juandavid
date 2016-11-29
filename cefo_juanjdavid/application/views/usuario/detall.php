@@ -1,4 +1,4 @@
-	<div class="cont">
+<div class="cont">
 	<h2>Detalls alumnes</h2><br/>
 		<table>
 		<tr><td><label class="det">Nom complert:</label></td><td>	<?php echo $alumne[0]->nom; echo" ". $alumne[0]->cognom1; echo" ". $alumne[0]->cognom2 ;?></td></tr>

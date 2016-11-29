@@ -3,7 +3,7 @@
 
 
 		<div class="rel">
-			<h2>Cursos ofertats </h2>
+			<h2>Cursos ofertats </h2><br>
 			<table class="most">
 				<tr>
 					<th>Codi</th>

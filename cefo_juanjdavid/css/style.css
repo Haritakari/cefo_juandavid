@@ -15,6 +15,7 @@ li{
 }
 .rel{
 	position:relative;
+	text-align:center;
 }
 .i{
 	position:absolute;
@@ -115,7 +116,7 @@ li.unem{
 .content3{
 	padding-top:20px;
 	padding-bottom:20px;
-	margin-top:-20px;
+	margin-top:-60px;
 	margin-bottom:100px;
 	background-color: #b9efdd;
 	box-shadow:5px 5px 5px #848484;
@@ -343,4 +344,3 @@ h2.det{
 .pagpeque img{
 	height:30px;
 }
-

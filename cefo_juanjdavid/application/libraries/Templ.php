@@ -61,7 +61,7 @@
 			<footer>
 				
 					<br/>
-					<span><a href="cefo@......com "></a>cefo@.....com</span><span> Aquesta pagina es un projecte academic de  : </span> <span> David Sanchez y Juanjo Guardiola></span>
+					<span><a href="cifo@......com ">cefo@.....com</span></a><span> Aquesta pagina es un projecte academic de  : </span> <span> David Sanchez y Juanjo Guardiola></span>
          		
 			</footer>
 
