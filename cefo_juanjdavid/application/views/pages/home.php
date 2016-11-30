@@ -21,5 +21,5 @@
 El diseño del portal y sus códigos fuente, así como los logos, marcas y demás signos distintivos que aparecen en el mismo pertenecen a la y están protegidos por los correspondientes derechos de propiedad intelectual e industrial. 
   </p>   </div>
 
-      <hr>
+     
 </div>
