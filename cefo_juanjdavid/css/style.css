@@ -57,10 +57,10 @@ a, a:hover, a:focus{
 	text-decoration:none;
 }
 .logger{
-	color:#ACFA58;
+	color:#61380B;
 }
 .logge{
-	color:red;
+	color:#2E64FE;
 }
 .flex{
 	flex:1;
@@ -104,7 +104,7 @@ li.unem{
 }
 
 .content{
-	margin-top:200px;
+	margin-top:140px;
 	margin-bottom:100px;
 	padding-top:20px;
 	padding-bottom:20px;
@@ -344,9 +344,9 @@ h2.det{
 	margin-left:35%;
 }
 
-.pagpeque{
+.peque{
 	height:30px;
 }
-.pagpeque img{
+.peque img{
 	height:30px;
 }
