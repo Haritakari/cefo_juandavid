@@ -20,12 +20,12 @@ li{
 .i{
 	position:absolute;
 	bottom:24px;
-	left:42%;
+	left:40%;
 }
 .d{
 	position:absolute;
 	bottom:24px;
-	right:42%;
+	right:40%;
 }
 .small{
 	font-variant:small-caps;
@@ -143,9 +143,10 @@ table img{
 	display:inline-block;
 	margin:20px;
 	padding:10px;
-	
-	color:white;
-	text-shadow:1px 1px 1px black;
+	color:#927650;
+	font-weight: bold;
+	font-variant: small-caps;
+	text-shadow: 1px 1px 1px black;
 }
 .izquierda{
 	float: left;
@@ -226,6 +227,22 @@ table{
  .most td,  .most th{
 	padding: 10px;
 }
+table.most  tr{
+	background-color:#E2E7E1;
+	
+}
+table.most tr:nth-of-type(even){
+	background-color:#D5DED9;
+}
+table.most tr:hover{
+	background-color:#CBD3CF;
+	
+}
+table.most th{
+	color:#7A6A53;
+	background-color:#99B2B7;
+	
+}
 .cont{
 	padding-top:20px;
 	padding-bottom:20px;
@@ -250,8 +267,11 @@ table{
 .det{
 	font-variant:small-caps;
 	display:inline-block;
-	width:200px;
-	
+	width:150px;
+	margin:5px 50px 5px 100px;
+}
+.det1{
+	font-variant:small-caps;
 	margin:5px 50px 5px 100px;
 }
 .point{
@@ -347,20 +367,4 @@ h2.det{
 }
 .noms{
 	color:yellow;
-}
-table tr{
-	background-color:#E2E7E1;
-	
-}
-table tr:nth-of-type(even){
-	background-color:#D5DED9;
-}
-table tr:hover{
-	background-color:#CBD3CF;
-	
-}
-table th{
-	color:#7A6A53;
-	background-color:#99B2B7;
-	
 }
